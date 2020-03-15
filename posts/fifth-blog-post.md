@@ -2,6 +2,7 @@
 title: Fifth Blog Post
 date: 2020-03-15T07:32:36.167Z
 description: A fifth post to show the CMS is working.
+layout: layouts/post.njk
 tags:
   - code
 ---
