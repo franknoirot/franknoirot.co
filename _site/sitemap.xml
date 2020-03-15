@@ -47,12 +47,12 @@
   </url>
   
   <url>
-    <loc>https://myurl.com/tags/another-tag/</loc>
+    <loc>https://myurl.com/tags/second-tag/</loc>
     <lastmod>2020-03-14</lastmod>
   </url>
   
   <url>
-    <loc>https://myurl.com/tags/second-tag/</loc>
+    <loc>https://myurl.com/tags/another-tag/</loc>
     <lastmod>2020-03-14</lastmod>
   </url>
   
@@ -62,7 +62,22 @@
   </url>
   
   <url>
+    <loc>https://myurl.com/tags/work/</loc>
+    <lastmod>2020-03-14</lastmod>
+  </url>
+  
+  <url>
     <loc>https://myurl.com/work/</loc>
+    <lastmod>2020-03-14</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://myurl.com/work/seo-checker/</loc>
+    <lastmod>2020-03-14</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://myurl.com/work/seo-checker/portfolio-config/</loc>
     <lastmod>2020-03-14</lastmod>
   </url>
 </urlset>

@@ -35,8 +35,15 @@ module.exports = function(eleventyConfig) {
 
   eleventyConfig.addCollection("tagList", require("./_11ty/getTagList"));
 
+  eleventyConfig.addCollection("work", function(collection) {
+    // console.log(`here's that COLLECTION you wanted sir`, collection)
+    // console.log(`And here's that shit filtered:`, collection.getFilteredByGlob("work/*/portfolio-config.md"))
+    return collection.getFilteredByGlob("work/*/portfolio-config.md");
+  });
+
   eleventyConfig.addPassthroughCopy("img");
   eleventyConfig.addPassthroughCopy("css");
+  eleventyConfig.addPassthroughCopy("work");
 
   /* Markdown Overrides */
   let markdownLibrary = markdownIt({
