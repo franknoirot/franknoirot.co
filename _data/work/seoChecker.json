@@ -1,5 +1,7 @@
 {
     "name": "SEO Checker",
+    "isLocal": true,
+    "isPublic": true,
     "path": "/seo-checker",
-    "themeColor": "firebrick"
+    "themeColor": "rebeccapurple"
 }

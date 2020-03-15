@@ -9,5 +9,9 @@ eleventyNavigation:
 <h1>My Work</h1>
 <ul>
 {%- for i, workItem in work -%}
-<li><a href='/work{{ workItem.path }}' style='color: {{  workItem.themeColor }}'>{{ workItem.name }}</a></li>
+{%- if workItem.isPublic -%}
+<li><a href='{% if workItem.isLocal %}/work{% endif %}{{ workItem.path }}'
+  {%- if not workItem.isLocal -%}target='_blank' rel='noopener noreferrer'{%- endif -%}
+  style='color: {{  workItem.themeColor }}'>{{ workItem.name }}</a></li>
+{%- endif -%}
 {%- endfor -%}

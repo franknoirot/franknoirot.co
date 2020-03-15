@@ -1,5 +1,7 @@
 {
     "name": "Map Animator",
+    "isLocal": true,
+    "isPublic": false,
     "path": "/map-animator",
     "themeColor": "rebeccapurple"
 }
