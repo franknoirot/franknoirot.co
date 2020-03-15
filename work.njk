@@ -9,5 +9,5 @@ eleventyNavigation:
 <h1>My Work</h1>
 <ul>
 {%- for i, workItem in work -%}
-<li><a href='/work{{ workItem.path }}' style='color: {{  workItem.themeColor }}'>{{ work.seoChecker.name }}</a></li>
+<li><a href='/work{{ workItem.path }}' style='color: {{  workItem.themeColor }}'>{{ workItem.name }}</a></li>
 {%- endfor -%}
