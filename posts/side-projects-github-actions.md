@@ -14,13 +14,13 @@ I am currently converting my portfolio site from one built with [Jekyll](https:/
 
 While I'm at it, I decided to try to fix one element of my workflow I've been unhappy with. There are many side projects and toy sites that I like to include on my personal site, like this [Pantone color picker](/work/pantone-picker) and [map animator](/work/map-animator) or this [SEO Checker](/work/seo-checker) (a prototype I'm developing to help my colleagues at [netamorphosis](https://netamorphosis.com). It's nice to have my personal site there as a kind of scratchpad for projects that aren't ready for prime time yet.
 
-Because I am still pretty new to building out these projects and managing Git repos, I have not yet found an elegant way to have my side projects' site directory (they're nearly all static sites) to my portfolio site's directory. So I have been committing code to my side project's GitHub repo, copying it, and uploading it to my portfolio site's repo using GitHub.com's GUI. I don't know much, but this doesn't feel like modern development to me. 
+Because I am still pretty new to building out these projects and managing Git repos, I have not yet found an elegant way to copy my side projects' site directory (they're nearly all static sites) to my portfolio site's directory. So I have been committing code to my side project's GitHub repo, copying it, and uploading it to my portfolio site's repo using GitHub.com's GUI. I don't know much, but it feels like there must be a better way. 
 
-I will be spending time learning [Make](https://www.gnu.org/software/make/manual/html_node/Introduction.html), [Webpack](https://webpack.js.org/), and [Rollup](https://rollupjs.org/guide/en/) to learn how to do this as part of my side projects' build process, but even if I learn the art of build configuration, each of my different side projects would have different "vendor lock-in" configurations to push each project to my portfolio, and furthermore I would always need to have my entire portfolio site pulled to whatever machine I was working on. Gross!
+I will be spending time learning [Make](https://www.gnu.org/software/make/manual/html_node/Introduction.html), [Webpack](https://webpack.js.org/), and [Rollup](https://rollupjs.org/guide/en/) to learn how to do this as part of my side projects' build process. But even if I learn the art of build configuration, each of my different side projects would have different "vendor lock-in" configurations to push each project to my portfolio, and I would always need to have my entire portfolio site pulled to whatever machine I was working on. Gross!
 
 ## The Solution
 
-Enter [GitHub Actions](https://github.com/features/actions) and Netlify. Instead of copying and pasting my side project's site *manually,* let's push code to our side project repo and have [Octocat](https://octodex.github.com/) go off and run those errands for us! And we'll do it one better: let's add a custom \*specially-named\* config file to our side project's root folder, where we can define anything we want about how that side project shows up and gets linked-to on the portfolio site!
+Enter [GitHub Actions](https://github.com/features/actions) and Netlify. Instead of copying and pasting one of my side project's site *manually,* let's push code to our side project repo and have [Octocat](https://octodex.github.com/) go off and run those errands for us! And we'll do it one better: let's add a custom \*specially-named\* config file to our side project's root folder, where we can define anything we want about how that side project shows up and gets linked on the portfolio site!
 
 ### Portfolio Configuration
 
@@ -36,7 +36,7 @@ First let's write that portfolio configuration file, since it's the shortest bit
 }
 ```
 
-This is our minimum viable product for "theming": we're gonna make a link a different color. But you should go crazy building out this config to make each of your side projects shine on your portfolio site's Work showcase page.
+This is our minimum viable product for "theming": basically, we're gonna make a link a different color. But feel free to build out this config as much as you like to make each of your own side projects shine on your portfolio site's Work showcase page.
 
 Drop this file into the root of your side project and push it to GitHub so that your remote and local repositories are matched up, because part of our next step is going to be out of our code editor and in the GitHub.com GUI.
 
@@ -47,9 +47,9 @@ Our GitHub Action is only going to automate two tasks:
 1. Copying the contents of our side project's `/_site` directory into the portfolio site's `/work/[project-name]` directory
 2. Copying our side project's `portfolio-config.json` file  into the `/_data/work` directory
 
-   **Note:** This is how I got the theming data to be accessible within my 11ty build, and will be a different destination depending on your SSG of choice. More details in the last section.
+   **Note:** This is how I got the theming data to be accessible within my 11ty build, but the location will be  different depending on your SSG of choice. More details in the last section.
 
-GitHub already has a well-stocked [Marketplace](https://github.com/marketplace?type=actions) of different Actions available to use and remix, and I found a solid option for achieving this copy-and-paste across repositories in the [CopyCat GitHub Action](https://github.com/marketplace/actions/copycat-action) by André Storhaug.
+GitHub already has a well-stocked [Marketplace](https://github.com/marketplace?type=actions) of different Actions available to use and remix, and I found a solid option for achieving this process (copy-and-paste across repositories) in the [CopyCat GitHub Action](https://github.com/marketplace/actions/copycat-action) by André Storhaug.
 
 Within the root of your side project directory, create a file within the folder structure `.github/workflows/main.yml`. GitHub Actions use [YAML](https://blog.stackpath.com/yaml/) to describe an Action's steps in a human-readable way.
 
@@ -112,7 +112,7 @@ jobs:
 
 First we name our Workflow and what triggers it. In our case, this will run on any push or pull request to the side project, but you could also add in a `tag` list so that it only runs on proper "releases". This is helpful if you'll be doing a lot of development on your side project and don't want to eat up your build minutes on GitHub.
 
-Then we describe our list of named Jobs. This is an interesting little limitation I'll revisit, but the CopyCat Action we'll be using below doesn't seem to like being used twice in the same job. So I've split out our two copying operations into two jobs, "directory" and "config", but eventually I'd like this to be one step.
+Then we describe our list of named Jobs. The CopyCat Action we used above doesn't seem to like being used twice in the same job. So I've split out our two copying operations into two jobs, "directory" and "config", but eventually I'd like this to be one step.
 
 In both Jobs we do three things:
 
@@ -120,7 +120,7 @@ In both Jobs we do three things:
 2. Checkout the side project's repo to our workspace using the standard Checkout Action
 3. Copy what we want to into the portfolio's repo using the CopyCat Action
 
-In the first job you can see I've used an "*" to select all the contents of the public folder for my source path (`src_path`), and added a trailing slash to the end of a new folder that will live in the `work/` directory of my portfolio site. This is so that I can essentially rename the `public/` folder to the `map-animator/` folder, allowing the URL of my side project to be `/work/map-animator`  within my portfolio site.
+In the first job, I've used an "*" to select all the contents of the public folder for my source path (`src_path`) and added a trailing slash to the end of a new folder that will live in the `work/` directory of my portfolio site. This is so I can rename the `public/` folder to the `map-animator/` folder, allowing the URL of my side project to be `/work/map-animator`  within my portfolio site.
 
 In the second Job I've added a `needs: directory` statement. This is a second limitation I ran into with CopyCat: the Action doesn't seem set up to be able to be run in parallel, which is the default if you define multiple Jobs within your workflow. This I am keen to fix because it nearly halves the time it takes to run the Workflow when run in parallel. In the meantime, this needs statement makes the second Job not fire until the first one finishes, eliminating the merge conflict error I was getting.
 
