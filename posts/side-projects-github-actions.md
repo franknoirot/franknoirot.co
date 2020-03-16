@@ -10,9 +10,9 @@ Here's a way to add side projects to your static-site generator (SSG) portfolio 
 
 ## The Problem
 
-I am currently converting my portfolio site from [Jekyll](https://jekyllrb.com/) to [11ty](https://11ty.dev) because I want to get closer to knowing how every line in my site works, and right now I am far more capable and motivated to do that with a Node.js code base than one written in Ruby.
+I am currently converting my portfolio site from one built with [Jekyll](https://jekyllrb.com/) to [11ty](https://11ty.dev) because I want to get closer to knowing how every line of code in my site works, and right now I am far more capable and motivated to do that with a Node.js code base than one written in Ruby.
 
-While I'm at it I decided to try to fix one annoyance I have. There are many side projects and toy sites that I like to include onto my personal site, things like this Pantone color picker and this [map animator](https://franknoirot-11ty.netlify.com/work/map-animator) or even prototypes of things I am coming up with to help my colleagues like this [SEO Checker](https://franknoirot-11ty.netlify.com/work/seo-checker). It's nice to have my personal site there as a kind of scratchpad for projects that aren't ready for prime time yet.
+While I'm at it I decided to try to fix one annoyance I have. There are many side projects and toy sites that I like to include onto my personal site, things like this [Pantone color picker](/work/pantone-picker) and this [map animator](/work/map-animator) or even prototypes of things I am coming up with to help my colleagues like this [SEO Checker](/work/seo-checker). It's nice to have my personal site there as a kind of scratchpad for projects that aren't ready for prime time yet.
 
 But because I am still pretty new to building out these projects and managing Git repos, I have not yet found an elegant way to have my side project's site directory (they're nearly all static sites) to my site's directory. So I have been committing code to my side project's GitHub repo, copying it, and uploading it to my portfolio site's repo using GitHub.com's GUI. I don't know much, but this doesn't feel like modern development to me. 
 
@@ -20,11 +20,11 @@ I will be spending time learning [Make](https://www.gnu.org/software/make/manual
 
 ## The Solution
 
-Enter [GitHub Actions](https://github.com/features/actions) and Netlify. Instead of copying and pasting my side project's site *manually,* let's push code to our side project repo and [Octocat](https://octodex.github.com/) go off and run those errands for us! And we'll do it one better: let's add a custom \*specially-named\* config file to our side project's root folder, where we can define anything we want about how that side project shows up and gets linked-to on the portfolio site!
+Enter [GitHub Actions](https://github.com/features/actions) and Netlify. Instead of copying and pasting my side project's site *manually,* let's push code to our side project repo and have [Octocat](https://octodex.github.com/) go off and run those errands for us! And we'll do it one better: let's add a custom \*specially-named\* config file to our side project's root folder, where we can define anything we want about how that side project shows up and gets linked-to on the portfolio site!
 
 ### Portfolio Configuration
 
-First let's write that portfolio configuration file:
+First let's write that portfolio configuration file, since it's the shortest bit:
 
 ```json
 {
@@ -38,7 +38,7 @@ First let's write that portfolio configuration file:
 
 This is our minimum viable product for "theming": we're gonna make a link a different color. But you should go crazy building out this config to make each of your side projects shine on your portfolio site's Work showcase page.
 
-Drop this file into the root of your side project and push it to GitHub so that your remote and local repositories are matched up, because our next step is going to be in the GitHub.com GUI.
+Drop this file into the root of your side project and push it to GitHub so that your remote and local repositories are matched up, because part of our next step is going to be out of our code editor and in the GitHub.com GUI.
 
 ### GitHub Action
 
@@ -47,11 +47,11 @@ Our GitHub Action is only going to automate two tasks:
 1. Copying the contents of our side project's `/_site` directory into the portfolio site's `/work/[project-name]` directory
 2. Copying our side project's `portfolio-config.json` file  into the `/_data/work` directory
 
-   **Note:** This is how I got the themeing data to be accessible within my 11ty build, and will be a different destination depending on your SSG of choice. More details in the last section.
+   **Note:** This is how I got the theming data to be accessible within my 11ty build, and will be a different destination depending on your SSG of choice. More details in the last section.
 
 GitHub already has a well-stocked [Marketplace](https://github.com/marketplace?type=actions) of different Actions available to use and remix, and I found a solid option for achieving this copy-and-paste across repositories in the [CopyCat GitHub Action](https://github.com/marketplace/actions/copycat-action) by André Storhaug.
 
-Within the root of your side project directory, create a file within the folder structure `.github/workflows/main.yml`. GitHub Actions use [YAML](https://blog.stackpath.com/yaml/) to describe an Actions steps in a human-readable way.
+Within the root of your side project directory, create a file within the folder structure `.github/workflows/main.yml`. GitHub Actions use [YAML](https://blog.stackpath.com/yaml/) to describe an Action's steps in a human-readable way.
 
 Here is the content within `main.yml`. We'll step through it below.
 
@@ -181,11 +181,11 @@ So in my [`work.njk`](https://github.com/franknoirot/franknoirot.co/tree/master/
 {% endraw %}
 ```
 
-Here we see Nunjucks + 11ty two-fold magic. First, 11ty takes any separate JSON files within a subdirectory of `_data` and adds each as an entry within a `data` object with the work directory's name. So `work.mapAnimator` is accessible on that object, if your file's path is `_data/work/mapAnimator.json`. Second, within Nunjucks you can iterate over the keys of an object just like an array, which felt odd and magical to me coming from Javascript.
+Here we see Nunjucks + 11ty two-fold magic. First, 11ty takes any separate JSON files within a subdirectory of `_data` and adds each as an entry within a `data` object with the work directory's name. So if your file's path is `_data/work/mapAnimator.json`, then `work.mapAnimator` is accessible on that object. Second, within Nunjucks you can iterate over the keys of an object just like an array, which felt odd and magical to me coming from Javascript.
 
-So here we iterate over each item in the work directory and refer to it as workItem. if the isPublic attribute is true, we create a list item and link for the side project. If the isLocal property is true on the side project we allow the path attribute to be the href of the link and open the link in a new tab, otherwise we tuck it under the /work/ subdirectory. This allows me to hide private or in-progress work, and include portfolio configs for client work where I don't own the codebase or don't want to put my personal code inside.
+We iterate over each item in the work directory and refer to it as workItem. If the isPublic attribute is true, we create a list item and link for the side project. If the isLocal property is true on the side project we allow the path attribute to be the href of the link and open the link in a new tab, otherwise we tuck it under the /work/ subdirectory. This allows me to hide private or in-progress work, and include portfolio configs for client work where I don't own the codebase or don't want to put my personal code inside.
 
-The inline styling of the link's color is my glorious minimum viable product for themeing. As naive as this implementation feels, it does have a lot of flexibility because it allows for any color value CSS will accept. When you build your own you should add configuration for layout, descriptions, and images of your side projects.
+The inline styling of the link's color is my glorious minimum viable product for theming. As small a gesture as it may be, it does have a lot of flexibility because it allows for any color value CSS will accept. I would recommend you use the platform and accept everything the target language (in this case, CSS) would accept with any configuration you build in. But when you build your own you should add configuration for layout, descriptions, and images of your side projects. Make it snazzy.
 
 ## Conclusion
 
