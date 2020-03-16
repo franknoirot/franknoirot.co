@@ -12,7 +12,7 @@ Here's a way to add side projects to your static-site generator (SSG) portfolio 
 
 I am currently converting my portfolio site from one built with [Jekyll](https://jekyllrb.com/) to [11ty](https://11ty.dev) because I want to get closer to knowing how every line of code in my site works, and right now I am far more capable and motivated to do that with a Node.js code base than one written in Ruby.
 
-While I'm at it, I decided to try to fix one element of my workflow I've been unhappy with. There are many side projects and toy sites that I like to include on my personal site, like this [Pantone color picker](/work/pantone-picker) and [map animator](/work/map-animator) or this [SEO Checker](/work/seo-checker) (a prototype I'm developing to help my colleagues at [netamorphosis](https://netamorphosis.com). It's nice to have my personal site there as a kind of scratchpad for projects that aren't ready for prime time yet.
+While I'm at it, I decided to try to fix one element of my workflow I've been unhappy with. There are many side projects and toy sites that I like to include on my personal site, like this [Pantone color picker](/work/pantone-picker) and [map animator](/work/map-animator) or this [SEO Checker](/work/seo-checker) (a prototype I'm developing to help my colleagues at [netamorphosis](https://netamorphosis.com)). It's nice to have my personal site there as a kind of scratchpad for projects that aren't ready for prime time yet.
 
 Because I am still pretty new to building out these projects and managing Git repos, I have not yet found an elegant way to copy my side projects' site directory (they're nearly all static sites) to my portfolio site's directory. So I have been committing code to my side project's GitHub repo, copying it, and uploading it to my portfolio site's repo using GitHub.com's GUI. I don't know much, but it feels like there must be a better way. 
 
@@ -38,7 +38,7 @@ First let's write that portfolio configuration file, since it's the shortest bit
 
 This is our minimum viable product for "theming": basically, we're gonna make a link a different color. But feel free to build out this config as much as you like to make each of your own side projects shine on your portfolio site's Work showcase page.
 
-Drop this file into the root of your side project and push it to GitHub so that your remote and local repositories are matched up, because part of our next step is going to be out of our code editor and in the GitHub.com GUI.
+Drop this file into the root of your side project and push it to GitHub so that your remote and local repositories are synced up, because part of our next step is going to be outside of our code editor and in the GitHub.com GUI.
 
 ### GitHub Action
 
@@ -47,7 +47,7 @@ Our GitHub Action is only going to automate two tasks:
 1. Copying the contents of our side project's `/_site` directory into the portfolio site's `/work/[project-name]` directory
 2. Copying our side project's `portfolio-config.json` file  into the `/_data/work` directory
 
-   **Note:** This is how I got the theming data to be accessible within my 11ty build, but the location will be  different depending on your SSG of choice. More details in the last section.
+   **Note:** This second step is specific to an 11ty project. The goal is to get your theming data to be accessible to your site/page, but the location will be  different depending on your SSG of choice. More details in the last section.
 
 GitHub already has a well-stocked [Marketplace](https://github.com/marketplace?type=actions) of different Actions available to use and remix, and I found a solid option for achieving this process (copy-and-paste across repositories) in the [CopyCat GitHub Action](https://github.com/marketplace/actions/copycat-action) by André Storhaug.
 
@@ -128,7 +128,7 @@ One further note on the second Job is that CopyCat allows you to specify files a
 
 ### Personal Token
 
-The `personal-token` key is needed if you use CopyCat to copy across directories. To set one up, visit the [Personal Access Tokens section](https://github.com/settings/tokens) of your Developer Settings page on GitHub.com and select **Generate New Token**. Select the `workflow` permission for this token (or more if you're doing fancier stuff), either naming it something like "Portfolio Actions" or a speciic name for each side project. This is a good solution if you're concerned about the security of these actions.
+The `personal-token` key is needed if you use CopyCat to copy across directories. To set one up, visit the [Personal Access Tokens section](https://github.com/settings/tokens) of your Developer Settings page on GitHub.com and select **Generate New Token**. Select the `workflow` permission for this token (or more if you're doing fancier stuff), either naming it something like "Portfolio Actions" or a speciic name for each side project. This is a good solution if you're concerned about the security of these Actions.
 
 Copy the generated token into your side project's **Secrets** section under the **Settings** tab and name it something appropriate like "PORTFOLIO_SECRET". This variable is now available to GitHub, including in your Workflow setup (defined above).
 
@@ -185,7 +185,7 @@ Here we see Nunjucks + 11ty two-fold magic. First, 11ty takes any separate JSON 
 
 We iterate over each item in the `work/` directory and refer to it as `workItem`. If the `isPublic` attribute is set to `true`, we create a list item and link for the side project. If the `isLocal` property is `true`, we allow the path attribute to be the destination of the link and open the link in a new tab, otherwise we tuck it under the /work/ subdirectory. This allows us to hide private or in-progress projects and include portfolio configs for client work where we don't own the codebase or don't want to put personal code inside.
 
-The inline styling of the link's color is my glorious minimum viable product for theming. As small a gesture as it may be, it does have a lot of flexibility because it allows for any color value CSS will accept. I would recommend you use the platform and accept everything the target language (in this case, CSS) would accept with any configuration you build in. When you build your own, you should feel free to add configuration for layout, descriptions, and images of your side projects. Make it snazzy.
+The inline styling of the link's color is my glorious minimum viable product for theming. As small a gesture as it may be, it does have a lot of flexibility because it allows for any color value CSS will accept. I would recommend you [use the platform](https://timkadlec.com/remembers/2019-10-21-using-the-platform/) and accept everything the target language (in this case, CSS) would accept with any configuration you build in. When you build your own, you should feel free to add configuration for layout, descriptions, and images of your side projects. Make it snazzy.
 
 ## Conclusion
 
