@@ -122,19 +122,19 @@ In both Jobs we do three things:
 
 In the first job, I've used an "*" to select all the contents of the public folder for my source path (`src_path`) and added a trailing slash to the end of a new folder that will live in the `work/` directory of my portfolio site. This is so I can rename the `public/` folder to the `map-animator/` folder, allowing the URL of my side project to be `/work/map-animator`  within my portfolio site.
 
-In the second Job I've added a `needs: directory` statement. This is a second limitation I ran into with CopyCat: the Action doesn't seem set up to be able to be run in parallel, which is the default if you define multiple Jobs within your workflow. This I am keen to fix because it nearly halves the time it takes to run the Workflow when run in parallel. In the meantime, this needs statement makes the second Job not fire until the first one finishes, eliminating the merge conflict error I was getting.
+In the second Job, I've added a `needs: directory` statement. The second limitation I ran into with CopyCat is the Action doesn't seem set up to be able to be run in parallel, which is the default if you define multiple Jobs within your Workflow. I am eager to fix this, because it nearly halves the time it takes to run the Workflow when run in parallel. In the meantime, this needs statement makes the second Job not fire until the first one finishes, eliminating the merge conflict error I was getting.
 
-One further note on the second Job is that CopyCat allows you to specify files as well as directories, and rename them by setting a different file name in the `dst_path` field. Thanks for that feature André!
+One further note on the second Job is that CopyCat allows you to specify files as well as directories and rename them by setting a different file name in the `dst_path` field. Thanks for that feature, André!
 
 ### Personal Token
 
-The `personal-token` key is needed if you use CopyCat to copy across directories. To set one up, visit the [Personal Access Tokens section](https://github.com/settings/tokens) of your Developer Settings page on GitHub.com and select **Generate New Token**. Select at least the `workflow` permission for this token (more if you're doing even fancier stuff), either name it something like "Portfolio Actions" or name it specifically per side project, if you're really concerned about the security of these actions.
+The `personal-token` key is needed if you use CopyCat to copy across directories. To set one up, visit the [Personal Access Tokens section](https://github.com/settings/tokens) of your Developer Settings page on GitHub.com and select **Generate New Token**. Select the `workflow` permission for this token (or more if you're doing fancier stuff), either naming it something like "Portfolio Actions" or a speciic name for each side project. This is a good solution if you're concerned about the security of these actions.
 
-Copy the generated token into your side project's **Secrets** section under the **Settings** tab and name it something appropriate like "PORTFOLIO_SECRET". This variable is now available to GitHub, including in your workflow step!
+Copy the generated token into your side project's **Secrets** section under the **Settings** tab and name it something appropriate like "PORTFOLIO_SECRET". This variable is now available to GitHub, including in your Workflow setup (defined above).
 
 ![View of Settings tab in a GitHub repository, with the Secrets section selected to view the PORTFOLIO_SECRET key.](/img/20-03-15_gh-actions_secrets.jpg)
 
-So with our config file written and our GitHub Action added, here's what our final code base will look like in our side project repository:
+We've now finished writing our config file and adding our GitHub Action. Here's what our final code base should look like in our side project repository:
 
 ```
 .github/
@@ -147,19 +147,19 @@ _site/ # this is where 11ty spits out its static files, may be different for you
 
 Push this code to your repository and watch what happens in the Actions tab of your repository on GitHub.com. If all goes well, switch over to your portfolio's repository and see the changes made and committed there!
 
-After you have that working you can begin hosting your portfolio site on [Netlify](https://www.netlify.com/), and *because we live in the future*, you will get start getting automatic rebuilds on your portfolio when you push to a side project's repo. Magic!
+After you have that working, you can begin hosting your portfolio site on [Netlify](https://www.netlify.com/), But that's not all: *Because we live in the future*, you will start getting automatic rebuilds on your portfolio when you push to your side project's repo. **Magic!**
 
 ### Bonus Round: Using Portfolio Config
 
-Sometimes I just want things to be available on my portfolio site, but not public and linked somewhere. What we've just built is perfect for that. But what if you do want a link to each of your side projects on a Work landing page, and don't want to have add code to your portfolio site every time you add a project? `portfolio-config.json` to the rescue.
+Sometimes I want projects to be stored on my portfolio site but not yet publicly available through a link. What we've just built is perfect for that. But what if you do want a link to each of your side projects on a Work landing page and don't want to have to add code to your portfolio site every time you add a project? `portfolio-config.json` to the rescue.
 
 What you're about to see is specific to 11ty using Nunjucks to template out pages, but the steps for getting this to work generally are:
 
 1. Create a `portfolio-config.json` file for each side project within its own repo
-2. Use GitHub Actions to copy that file into the portfolio's directory somewhere where it can be use by global or page-level data while building the site
+2. Use GitHub Actions to copy that file into the portfolio's directory somewhere where it can be used as global or page-level data while building the site
 3. Write templating logic to loop over those JSON data files and convert them into components or elements on the page
 
-For my site I copied each portfolio config into a [work folder](https://github.com/franknoirot/franknoirot.co/tree/master/_data/work) within my `_data/` directory. 11ty grabs any `.json` files placed in this directory and make it available within your templates as an entry within a global `data` object.
+For my site I copied each portfolio config into a [work folder](https://github.com/franknoirot/franknoirot.co/tree/master/_data/work) within my `_data/` directory. 11ty grabs any `.json` files placed in this directory and makes it available within your templates as an entry within a global `data` object.
 
 So in my [`work.njk`](https://github.com/franknoirot/franknoirot.co/tree/master/_data/work) file I have the following template logic:
 
@@ -183,12 +183,12 @@ So in my [`work.njk`](https://github.com/franknoirot/franknoirot.co/tree/master/
 
 Here we see Nunjucks + 11ty two-fold magic. First, 11ty takes any separate JSON files within a subdirectory of `_data` and adds each as an entry within a `data` object with the work directory's name. So if your file's path is `_data/work/mapAnimator.json`, then `work.mapAnimator` is accessible on that object. Second, within Nunjucks you can iterate over the keys of an object just like an array, which felt odd and magical to me coming from Javascript.
 
-We iterate over each item in the work directory and refer to it as workItem. If the isPublic attribute is true, we create a list item and link for the side project. If the isLocal property is true on the side project we allow the path attribute to be the href of the link and open the link in a new tab, otherwise we tuck it under the /work/ subdirectory. This allows me to hide private or in-progress work, and include portfolio configs for client work where I don't own the codebase or don't want to put my personal code inside.
+We iterate over each item in the `work/` directory and refer to it as `workItem`. If the `isPublic` attribute is set to `true`, we create a list item and link for the side project. If the `isLocal` property is `true`, we allow the path attribute to be the destination of the link and open the link in a new tab, otherwise we tuck it under the /work/ subdirectory. This allows us to hide private or in-progress projects and include portfolio configs for client work where we don't own the codebase or don't want to put personal code inside.
 
-The inline styling of the link's color is my glorious minimum viable product for theming. As small a gesture as it may be, it does have a lot of flexibility because it allows for any color value CSS will accept. I would recommend you use the platform and accept everything the target language (in this case, CSS) would accept with any configuration you build in. But when you build your own you should add configuration for layout, descriptions, and images of your side projects. Make it snazzy.
+The inline styling of the link's color is my glorious minimum viable product for theming. As small a gesture as it may be, it does have a lot of flexibility because it allows for any color value CSS will accept. I would recommend you use the platform and accept everything the target language (in this case, CSS) would accept with any configuration you build in. When you build your own, you should feel free to add configuration for layout, descriptions, and images of your side projects. Make it snazzy.
 
 ## Conclusion
 
-This site's Work directory operates on this system, so [check it out live](/work) or [view the source code](https://github.com/franknoirot/franknoirot.co). I am really excited about the future of static build tools that chain together, because they feel easier to understand to me, but they can add up to more than the sum of their parts, and turn into really elegant workflows.
+This site's Work directory operates on this system, so [check it out live](/work) or [view the source code](https://github.com/franknoirot/franknoirot.co). I am really excited about the future of static build tools that chain together, because they feel easier to understand and work with. They can add up to more than the sum of their parts and turn out surprisingly elegant workflows.
 
-If you end up building something like this or improving on it, or have a edit for this piece, please [reach out to me](https://instagram.com/franknoirot). This is my first blog post, and I'm really excited to talk to developers.
+If you end up building something like this or improving on it, or have an edit for this piece, please [reach out to me](https://instagram.com/franknoirot). This is my first blog post, and I'm really excited to talk to developers.
