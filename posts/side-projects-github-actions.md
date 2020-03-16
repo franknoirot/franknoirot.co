@@ -132,11 +132,11 @@ The `personal-token` key is needed if you use CopyCat to copy across directories
 
 Copy the generated token into your side project's **Secrets** section under the **Settings** tab and name it something appropriate like "PORTFOLIO_SECRET". This variable is now available to GitHub, including in your workflow step!
 
-![View of Settings tab in a GitHub repository, with the Secrets section selected to view the PORTFOLIO_SECRET key.](/static/img/20-03-15_gh-actions_secrets.jpg)
+![View of Settings tab in a GitHub repository, with the Secrets section selected to view the PORTFOLIO_SECRET key.](/img/20-03-15_gh-actions_secrets.jpg)
 
 So with our config file written and our GitHub Action added, here's what our final code base will look like in our side project repository:
 
-```ignore
+```
 .github/
   | workflows/
     - main.yml
@@ -163,9 +163,10 @@ For my site I copied each portfolio config into a [work folder](https://github.c
 
 So in my [`work.njk`](https://github.com/franknoirot/franknoirot.co/tree/master/_data/work) file I have the following template logic:
 
-```html
+```
 <h1>My Work</h1>
 <ul>
+{% raw %}
 {%- for i, workItem in work -%}
 {%- if workItem.isPublic -%}
 <li>
@@ -177,6 +178,7 @@ So in my [`work.njk`](https://github.com/franknoirot/franknoirot.co/tree/master/
 </li>
 {%- endif -%}
 {%- endfor -%}
+{% endraw %}
 ```
 
 Here we see Nunjucks + 11ty two-fold magic. First, 11ty takes any separate JSON files within a subdirectory of `_data` and adds each as an entry within a `data` object with the work directory's name. So `work.mapAnimator` is accessible on that object, if your file's path is `_data/work/mapAnimator.json`. Second, within Nunjucks you can iterate over the keys of an object just like an array, which felt odd and magical to me coming from Javascript.
