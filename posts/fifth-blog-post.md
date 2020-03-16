@@ -2,7 +2,7 @@
 title: Building a Side Projects Directory Using GitHub Actions
 layout: layouts/post.njk
 date: 2020-03-15T16:32:36.167Z
-description: A fifth post to show the CMS is working.
+description: Automating adding side projects to my portfolio site
 tags:
   - code
 ---
