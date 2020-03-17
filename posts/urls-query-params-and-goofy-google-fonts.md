@@ -23,7 +23,7 @@ Back in our Figma URL we see a nice human-readable string, the name of the proje
 
 Finally the powerful part is the query parameter `?node-id=31%3A176`. The "?" signals that we're past the normal URL, and into a set of key-value pairs. In this case the key "node-id" has a value of "31%3A176". If there were more parameters they would be separated by an ampersand (&), and each would take the form of "key=value".
 
-Figma is adding a bit of nicety to its share links so that the when you share a link to your work with someone they arrive on the same artboard you were looking at, not some random starting point or the first artboard created, which could be really disorientating in large projects.
+Figma is adding a bit of nicety to its share links so that the when you share a link to your work with someone they arrive on the same artboard you were looking at, not some random starting point or the first artboard created, which could be really disorientating in large projects. This is not unlike linkable headings like the ones on this site, which lead who you share them with to roughly the same area of the post you were reading.
 
 They had to two things to make this low-key feature available:
 
