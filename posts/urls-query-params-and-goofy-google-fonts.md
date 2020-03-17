@@ -38,4 +38,38 @@ So if we wanted to make a little in-page api, all we'd need is a script that lis
 
 Using the concepts outlined above, I added a short script on my base page template for my 11ty site (this one). It listens for a `font` query parameter, and if it finds one it inserts a font `<link>` tag into the page with a generated URL to Google Fonts with the corresponding value, then sets the page's font-family style attribute to that font.
 
-Try it out now. Here's this page with [Bellota](./?font=Bellota), with [Fira Sans](./font=Fira+Sans), and with [Indie Flower](./?font=Indie+Flower).
+Try it out now. Here's this page with [Bellota](./?font=Bellota), with [Fira Sans](./?font=Fira+Sans), and with [Indie Flower](./?font=Indie+Flower).
+
+Here's the entire script to make this possible:
+
+```javascript
+window.addEventListener('load', () => {
+  const searchParams = new URLSearchParams(window.location.search)
+  if (!searchParams || searchParams === null) return
+  
+  const hasFontParam = searchParams.has('font')
+  if (!hasFontParam || hasFontParam === null) return
+
+  const fontVal = searchParams.get('font')
+  const fontLink = document.createElement('link')
+  fontLink.href = `https://fonts.googleapis.com/css?family=${ fontVal }&display=swap`
+  fontLink.rel = "stylesheet"
+
+  document.head.appendChild(fontLink)
+  document.body.style.setProperty('--font-family', fontVal.replace('+', ' '))
+})
+```
+
+The `URLSearchParams `interface is your tool to parse those params. The `window.location.search` property is the portion of your page's URL starting with the "?" that begins the query parameters. If you pass that into the `URLSearchParams `you are returned an Iterator that you can work with much like a Object.
+
+The `.has(someName)` method returns `true` or `false` whether a parameter with the name "someName" was found. If we do find the "font" parameter on our URL, we get its value by calling the `.get(someName)` method.
+
+Now that we have the font name, we'll create a link tag and set its `href` (link location) property to a URL that follows Google Fonts' URL pattern, but with our font value inserted. We tell the browser this is a stylesheet by setting the `rel` attribute to "stylesheet", then add the link element to the head of our document.
+
+Finally, we set the font family of the page to the new font we've made available. I've used a CSS Variable here (`--font-family` instead of `font-family`) to let me keep the direct assignment of the font-family on the body as a fallback. That way if someone enters in a string that isn't a Google Font the page still looks nice, and nothing changes. The URLs of Google Fonts have pluses instead of spaces so I expect the user to follow the same pattern, and I call the `.replace(string1, string2)` method to get spaces instead when setting the CSS value.
+
+## Conclusions
+
+APIs aren't just for servers! There are tons of interfaces within the frontend of the web that we can make available to our users to make their lives easier or even just a bit goofier. Think of all the strange secret functionality you can add to even your most static sites by adding a bit of logic using query parameters.
+
+I've started building a concepting tool that uses these principles of links, parameters, and CSS variables that I'm very excited to write more about soon. If you're interested in discussing this topic or have built something with similar concepts, please [reach out](https://instagram.com/franknoirot) to share!
