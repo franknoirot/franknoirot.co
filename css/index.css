@@ -7,6 +7,7 @@
   --navy: #17050F;
   --blue: #082840;
   --white: #fff;
+  --font-family: system-ui, sans-serif;
 }
 * {
   box-sizing: border-box;
@@ -16,6 +17,7 @@ body {
   padding: 0;
   margin: 0;
   font-family: system-ui, sans-serif;
+  font-family: var(--font-family);
   color: var(--darkgray);
   background-color: var(--white);
 }
@@ -38,18 +40,17 @@ a[href]:visited {
   color: var(--navy);
 }
 main {
-  padding: 1rem;
+  padding: 2.5rem;
 }
 main :first-child {
   margin-top: 0;
 }
 header {
-  border-bottom: 1px dashed var(--lightgray);
-}
-header:after {
-  content: "";
-  display: table;
-  clear: both;
+  box-sizing: border-box;
+  padding: 0 2.5rem;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
 }
 table {
   margin: 1em 0;
@@ -116,10 +117,10 @@ pre {
 
 /* Header */
 .home {
-  padding: 0 1rem;
+  display: block;
   float: left;
   margin: 1rem 0; /* 16px /16 */
-  font-size: 1em; /* 16px /16 */
+  font-size: 1.4em; /* 16px /16 */
 }
 .home :link:not(:hover) {
   text-decoration: none;
@@ -129,8 +130,8 @@ pre {
 .nav {
   padding: 0;
   list-style: none;
-  float: left;
-  margin-left: 1em;
+  display: flex;
+  align-items: center;
 }
 .nav-item {
   display: inline-block;
@@ -141,7 +142,6 @@ pre {
 }
 .nav-item-active {
   font-weight: 700;
-  text-decoration: underline;
 }
 
 /* Posts list */
@@ -223,4 +223,14 @@ a[href].direct-link:focus:visited,
 :hover > a[href].direct-link,
 :hover > a[href].direct-link:visited {
   color: #aaa;
+}
+
+
+.big-statement {
+  font-size: 1.4rem;
+  line-height: 1.6;
+}
+.big-statement a {
+  font-weight: bold;
+  text-decoration: none;
 }

@@ -1,13 +1,14 @@
 ---
 layout: layouts/home.njk
-eleventyNavigation:
-  key: Home
-  order: 1
 ---
 
-<h1>Latest 3 Posts</h1>
+<p class='big-statement'>
+  I make simple <a href='/work'>tools</a> using code.<br>
+  I live in New York City and work at <a href='https://www.netamorphosis.com'>netamorphosis</a>.<br>
+  I <a href='/writing'>write</a> and <a href='/work/?filter=art'>make art</a> occassionally.
+</p>
 
-{% set postslist = collections.posts | head(-3) %}
+{% set postslist = collections.posts | head(-4) %}
 {% set postslistCounter = collections.posts | length %}
 {% include "postslist.njk" %}
 
