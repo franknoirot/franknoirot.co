@@ -38,7 +38,7 @@ So if we wanted to make a little in-page api, all we'd need is a script that lis
 
 Using the concepts outlined above, I added a short script on my base page template for my 11ty site (this one). It listens for a `font` query parameter, and if it finds one it inserts a font `<link>` tag into the page with a generated URL to Google Fonts with the corresponding value, then sets the page's font-family style attribute to that font.
 
-Try it out now. Here's this page with [Bellota](./font=Bellota#google-fonts-changing-room), with [Fira Sans](./font=Fira+Sans#google-fonts-changing-room), and with [Indie Flower](./font=Indie+Flower#google-fonts-changing-room).
+Try it out now. Here's this page with Bellota, with [Fira Sans](./?font=Fira+Sans#google-fonts-changing-room), and with [Indie Flower](./?font=Indie+Flower#google-fonts-changing-room).
 
 Here's the entire script to make this possible:
 
