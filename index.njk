@@ -7,9 +7,43 @@ layout: layouts/home.njk
   I live in New York City and work at <a href='https://www.netamorphosis.com'>netamorphosis</a>.<br>
   I <a href='/writing'>write</a> and <a href='/work/?filter=art'>make art</a> occassionally.
 </p>
+<div class='two-col'>
+  <section class='writing-col' style='color: {{ theme.themeColor1Dark }}'>
+    <h2>Latest Writing</h2>
+    {% set postslist = collections.posts | head(-4) %}
+    {% set postslistCounter = collections.posts | length %}
+    {% include "postslist.njk" %}
+    <a class='arrow-link' href="{{ '/posts/' | url }}">See All</a>
+  </section>
+  <section class='work-col' style='color: {{ theme.themeColor2Dark }}'>
+    <h2>Latest Work</h2>
+    {% set workLength = 4 %}
+    {%- for i, workItem in work -%}
+    {%- if workItem.isPublic and workLength > 0 -%}
+    <li>
+      <a class='work-item' href='{% if workItem.isLocal %}/work{% endif %}{{ workItem.path }}'
+      {%- if not workItem.isLocal -%}target='_blank' rel='noopener noreferrer'{%- endif -%}
+      style='color: {{  workItem.themeColor }}'>{{ workItem.name }}</a>
+    </li>
+    {% set workLength = workLength - 1 %}
+    {%- endif -%}
+    {%- endfor -%}
+    <a class='arrow-link' href="{{ '/work/' | url }}">See All</a>
+  </section>
+</div>
 
-{% set postslist = collections.posts | head(-4) %}
-{% set postslistCounter = collections.posts | length %}
-{% include "postslist.njk" %}
 
-<p>More posts can be found in <a href="{{ '/posts/' | url }}">the archive</a>.</p>
+<svg class='bg-wave' viewBox="0 0 1440 796" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M541.376 186.162C767.939 240.313 1155.8-76.484 1440 17.568V797H0V186.162c49.701-3.836 290.202-60.033 541.376 0z" fill="url(#paint0_linear)"/>
+  <path d="M541.376 186.162C767.939 240.313 1155.8-76.484 1440 17.568V797H0V186.162c49.701-3.836 290.202-60.033 541.376 0z" fill="url(#paint1_linear)"/>
+  <defs>
+    <linearGradient id="paint0_linear" x1="-40.528" y1="211.176" x2="1473.52" y2="128.607" gradientUnits="userSpaceOnUse">
+      <stop stop-color="{{ theme.themeColor1 }}"/>
+      <stop offset="1" stop-color="{{ theme.themeColor2 }}"/>
+    </linearGradient>
+    <linearGradient id="paint1_linear" x1="720" y1="0" x2="720" y2="797" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#fff" stop-opacity="0"/>
+      <stop offset="1" stop-color="#fff"/>
+    </linearGradient>
+  </defs>
+</svg>

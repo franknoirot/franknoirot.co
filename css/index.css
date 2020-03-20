@@ -19,7 +19,6 @@ body {
   font-family: system-ui, sans-serif;
   font-family: var(--font-family);
   color: var(--darkgray);
-  background-color: var(--white);
 }
 p:last-child {
   margin-bottom: 0;
@@ -52,6 +51,15 @@ header {
   justify-content: space-between;
   width: 100%;
 }
+
+.bg-wave {
+  position: absolute;
+  top: 15vh;
+  left: 0;
+  right: 0;
+  z-index: -1;
+}
+
 table {
   margin: 1em 0;
 }
@@ -233,4 +241,46 @@ a[href].direct-link:focus:visited,
 .big-statement a {
   font-weight: bold;
   text-decoration: none;
+}
+
+.two-col {
+  box-sizing: border-box;
+  margin-block-start: 15vh;
+  display: grid;
+  grid-template-columns: 6fr 4fr;
+  gap: 5vw;
+  width: 100%;
+}
+.two-col h2 {
+  border-bottom: solid 1px;
+}
+
+
+.arrow-link {
+  position: relative;
+  display: block;
+  margin-block-start: 2em;
+  color: inherit;
+  text-decoration: none;
+  font-family: inherit;
+  font-size: ,9rem;
+}
+.arrow-link::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  display: inline-block;
+  background: url(/img/arrow.svg);
+  width: 2.2em;
+  height: 1em;
+  margin-inline-start: 1em;
+  object-fit: contain;
+  transform: translateY(calc(-50% + .15em));
+}
+
+
+@media (orientation: portrait) {
+  .two-col {
+    grid-template-columns: 1fr;
+  }
 }
