@@ -13,7 +13,7 @@ layout: layouts/home.njk
     {% set postslist = collections.posts | head(-4) %}
     {% set postslistCounter = collections.posts | length %}
     {% include "postslist.njk" %}
-    <a class='arrow-link' href="{{ '/posts/' | url }}">See All</a>
+    <a class='arrow-link' href="{{ '/writing/' | url }}">See All</a>
   </section>
   <section class='work-col' style='color: {{ theme.themeColor2Dark }}'>
     <h2>Latest Work</h2>
