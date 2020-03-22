@@ -7,6 +7,7 @@
     <meta name="Description" content="{{ renderData.description or description or metadata.description }}">
     <link rel="stylesheet" href="{{ '/css/index.css' | url }}">
     <link rel="stylesheet" href="{{ '/css/prism-base16-monokai.dark.css' | url }}">
+    {% include 'theme.njk' %}
     <link rel="alternate" href="{{ metadata.feed.path | url }}" type="application/atom+xml" title="{{ metadata.title }}">
     <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
   </head>

@@ -1,0 +1,16 @@
+<style id='theme-data'>
+    :root {
+        {% for colorName, color in theme %}
+        --theme-hue-{{loop.index}}: {{ color.hue }};
+        --theme-brightness-{{loop.index}}: {{ color.brightness }};
+        --theme-color-{{loop.index}}: hsl(var(--theme-hue-{{loop.index}}), 60%, 85%);
+        --theme-color-{{loop.index}}-dark: hsl(var(--theme-hue-{{loop.index}}), 80%, {% adjustBrightness 5, 20, color.brightness %}%);
+        {% endfor %}
+    }
+
+    {% for colorName, color in theme %}
+    a.theme-{{loop.index}}:hover {
+        color: var(--theme-color-{{loop.index}})
+    }
+    {% endfor %}
+</style>

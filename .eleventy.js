@@ -40,6 +40,11 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy("work");
   eleventyConfig.addPassthroughCopy("admin");
 
+  eleventyConfig.addNunjucksShortcode("adjustBrightness", function(base, max, adjustment) {
+    const res =  (parseInt(base) + max*(1 - parseFloat(adjustment))).toPrecision(3)
+    return `${ res }`
+  });
+
   /* Markdown Overrides */
   let markdownLibrary = markdownIt({
     html: true,
