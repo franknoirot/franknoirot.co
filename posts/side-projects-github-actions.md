@@ -56,6 +56,7 @@ Within the root of your side project directory, create a file within the folder 
 Here is the content within `main.yml`. We'll step through it below.
 
 ```yaml
+{% raw %}
 # This is a basic workflow to help you get started with Actions
 
 name: Copy to Portfolio and Push to Netlify
@@ -108,6 +109,7 @@ jobs:
           dst_path: _data/work/mapAnimator.json
           dst_owner: franknoirot
           dst_repo_name: franknoirot.co
+{% endraw %}
 ```
 
 First we name our Workflow and what triggers it. In our case, this will run on any push or pull request to the side project, but you could also add in a `tag` list so that it only runs on proper "releases". This is helpful if you'll be doing a lot of development on your side project and don't want to eat up your build minutes on GitHub.
