@@ -4,8 +4,9 @@ author: 'Allaby, Michael'
 cover: /img/gardeners-guide-to-weather-and-climate.jpg
 publishDate: 2015-01-01T05:00:00.000Z
 pages: 333
+read: true
 checkedOut: false
-checkedOutName: n/a
+checkedOutName: ''
 genres:
   - nonfiction
   - science
@@ -13,5 +14,9 @@ genres:
 tags:
   - hardback
 publisher: Timber Press
+publishLocation: 'Portland, Oregon'
+editor: Michael Dempsey
 language: en
+locID: SB453.A618 2015
+isbn: 978-1-60469-554-0
 ---
