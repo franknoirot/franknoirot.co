@@ -46,4 +46,6 @@ collections:
       - { label: "Language", name: "language", widget: "string", default: "en" }
       - { label: "Library of Congress ID", name: "locID", widget: "string", required: false }
       - { label: "ISSN", name: "isbn", widget: "string", required: false }
+      - { label: "Review", name: "body", widget: "markdown" }
+
 
