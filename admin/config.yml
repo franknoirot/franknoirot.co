@@ -22,3 +22,23 @@ collections:
       - { label: "Summary", name: "description", widget: "text" }
       - { label: "Tags", name: "tags", widget: "list", default: ["post"] }
       - { label: "Body", name: "body", widget: "markdown" }
+  # Books in my library
+  - name: "library"
+    label: "Book"
+    folder: "books"
+    create: true
+    slug: "{{title}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Author", name: "author", widget: "string" }
+      - { label: "Cover Image", name: "cover", widget: "image" }
+      - { label: "Date Published", name: "publishDate", widget: "date" }
+      - { label: "Pages", name: "pages", widget: "number" }
+      - { label: "Is Checked Out", name: "checkedOut", widget: "boolean", default: false }
+      - { label: "Checked Out By", name: "checkedOutName", widget: "string", optional: true }
+      - { label: "Genres", name: "genres", widget: "list", optional: true }
+      - { label: "Tags", name: "tags", widget: "list", optional: true }
+      - { label: "Edition", name: "tags", widget: "list", optional: true }
+      - { label: "Publisher", name: "publisher", widget: "string", optional: true }
+      - { label: "Language", name: "language", widget: "string", optional: true }
+      - { label: "Language", name: "language", widget: "string", default: "en" }
