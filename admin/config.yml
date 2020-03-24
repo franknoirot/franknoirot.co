@@ -34,11 +34,16 @@ collections:
       - { label: "Cover Image", name: "cover", widget: "image" }
       - { label: "Date Published", name: "publishDate", widget: "date" }
       - { label: "Pages", name: "pages", widget: "number" }
+      - { label: "Frank Has Read", name: "read", widget: "boolean", default: false }
       - { label: "Is Checked Out", name: "checkedOut", widget: "boolean", default: false }
-      - { label: "Checked Out By", name: "checkedOutName", widget: "string", optional: true }
-      - { label: "Genres", name: "genres", widget: "list", optional: true }
-      - { label: "Tags", name: "tags", widget: "list", optional: true }
-      - { label: "Edition", name: "tags", widget: "list", optional: true }
-      - { label: "Publisher", name: "publisher", widget: "string", optional: true }
-      - { label: "Language", name: "language", widget: "string", optional: true }
+      - { label: "Checked Out By", name: "checkedOutName", widget: "string", required: false }
+      - { label: "Genres", name: "genres", widget: "list", required: false }
+      - { label: "Tags", name: "tags", widget: "list", required: false }
+      - { label: "Edition", name: "tags", widget: "list", required: false }
+      - { label: "Publisher", name: "publisher", widget: "string", required: false }
+      - { label: "Place of Publication", name: "publishLocation", widget: "string", required: false }
+      - { label: "Editor", name: "editor", widget: "string", required: false }
       - { label: "Language", name: "language", widget: "string", default: "en" }
+      - { label: "Library of Congress ID", name: "locID", widget: "string", required: false }
+      - { label: "ISSN", name: "isbn", widget: "string", required: false }
+
