@@ -296,10 +296,11 @@ a[href].direct-link:focus:visited,
 
 /* LIBRARY */
 .book-grid {
+  --gap: 2em;
   margin: 5em 0;
   display: grid;
-  grid-template-columns: repeat(5,1fr);
-  gap: 5vmin;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: calc(var(--gap) * 2) var(--gap);
 }
 
 .book img {
