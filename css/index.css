@@ -294,6 +294,22 @@ a[href].direct-link:focus:visited,
 }
 
 
+/* LIBRARY */
+.book-grid {
+  margin: 5em 0;
+  display: grid;
+  grid-template-columns: repeat(5,1fr);
+  gap: 5vmin;
+}
+
+.book img {
+max-width: 100%;
+max-height: 20rem;
+margin: auto;
+}
+
+
+
 @media (orientation: portrait) {
   .two-col {
     grid-template-columns: 1fr;
