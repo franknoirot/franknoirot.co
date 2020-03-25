@@ -30,6 +30,7 @@ collections:
     slug: "{{title}}"
     fields:
       - { label: "Title", name: "title", widget: "string" }
+      - { label: "Subtitle", name: "subtitle", widget: "string", required: false}
       - { label: "Author", name: "author", widget: "string" }
       - { label: "Cover Image", name: "cover", widget: "image" }
       - { label: "Date Published", name: "publishDate", widget: "date" }
@@ -45,7 +46,7 @@ collections:
       - { label: "Editor", name: "editor", widget: "string", required: false }
       - { label: "Language", name: "language", widget: "string", default: "en" }
       - { label: "Library of Congress ID", name: "locID", widget: "string", required: false }
-      - { label: "ISSN", name: "isbn", widget: "string", required: false }
-      - { label: "Review", name: "body", widget: "markdown" }
+      - { label: "ISBN", name: "isbn", widget: "string", required: false }
+      - { label: "Review", name: "body", widget: "markdown", required: false }
 
 
