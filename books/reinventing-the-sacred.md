@@ -1,5 +1,6 @@
 ---
 title: Reinventing the Sacred
+subtitle: 'A New View of Science, Reason and Religion'
 author: 'Kauffman, Stuart A.'
 cover: /img/reinventing-the-sacred.jpg
 publishDate: 2010-01-01T05:00:00.000Z
