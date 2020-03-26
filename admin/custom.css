@@ -52,7 +52,7 @@
         flex-direction: column;
         min-width: unset;
     }
-    
+
     #nc-root > div:last-child > div > div:first-child {
         display: flex;
         position: relative;
@@ -81,11 +81,28 @@
     }
     
     #nc-root > div:last-child > div > div:first-child > div:first-of-type {
-        /* justify-content: flex-start; */
-        /* flex-wrap: wrap; */
+        justify-content: flex-start;
         max-width: 100%;
         align-items: flex-end;
-        /* font-size: .7rem; */
-        padding: .5em .2em;
+        padding: .5em 0;
+    }
+
+    #nc-root > div:last-child > div > div:first-child > div:last-child {
+        width: fit-content;
+        height: fit-content;
+        position: fixed;
+        top: 0;
+        right: .5em;
+    }
+    
+    #nc-root > div:last-child > div > div:first-child a {
+        padding: .5em;
+    }
+    
+    #nc-root > div:last-child > div > div:last-child > div:first-child {
+        bottom: 3vh;
+        top: unset;
+        position: fixed;
+        right: 3vh;
     }
 }
