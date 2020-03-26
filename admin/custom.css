@@ -1,4 +1,5 @@
 @media(max-width: 700px) {
+    /* HOME DASHBOARD */
     #nc-root header {
         height: unset;
     }
@@ -38,5 +39,53 @@
     #nc-root > div:last-child main {
         padding: 0;
         margin-block-start: 2em;
+    }
+
+
+
+
+
+    /* EDITOR */
+    #nc-root > div:last-child > div {
+        padding-block-start: 0;
+        display: flex;
+        flex-direction: column;
+        min-width: unset;
+    }
+    
+    #nc-root > div:last-child > div > div:first-child {
+        display: flex;
+        position: relative;
+        flex-direction: column;
+        height: auto;
+        min-width: unset;
+        justify-content: flex-start;
+        /* align-items: flex-end; */
+    }
+    
+    #nc-root > div:last-child > div > div:first-child > *[role="button"] {
+        margin: .5em;
+    }
+        
+    #nc-root > div:last-child > div > div:first-child > div:first-of-type *[role="button"], #nc-root > div:last-child > div > div:first-child > div:first-of-type button {
+        margin: .5em;
+        font-size: .8rem;
+    }
+    
+    #nc-root > div:last-child > div > div:first-child > div:first-of-type > div {
+        width: fit-content;
+    }
+    
+    #nc-root > div:last-child > div > div:first-child > div:first-of-type > div:last-child > div {
+        margin: 0;
+    }
+    
+    #nc-root > div:last-child > div > div:first-child > div:first-of-type {
+        /* justify-content: flex-start; */
+        /* flex-wrap: wrap; */
+        max-width: 100%;
+        align-items: flex-end;
+        /* font-size: .7rem; */
+        padding: .5em .2em;
     }
 }
