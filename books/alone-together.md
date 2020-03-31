@@ -1,6 +1,6 @@
 ---
 title: Alone Together
-subtitle: Why we expect ore from technology and less from each othert
+subtitle: Why we expect ore from technology and less from each other
 author: Sherry Turkle
 cover: /img/20200328_093208.jpg
 publishDate: 2012-01-01T05:00:00.000Z
