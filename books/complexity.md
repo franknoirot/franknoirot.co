@@ -11,8 +11,6 @@ genres:
   - Nonfiction
   - data science
   - information theory
-tags:
-  - ''
 publisher: Oxford University Press
 publishLocation: 'New York, NY'
 language: en

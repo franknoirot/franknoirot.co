@@ -17,3 +17,4 @@ language: en
 locID: HT167.J33 1992 307.76'0973—dc20
 isbn: 0-679-74195-X
 ---
+A very important book to me. Really worth sticking through; it's got a lot of little ideas peppered through. And it was written by a passionate journalist who didn't know anything about the study of Urban Design but knew people, which was more true.
