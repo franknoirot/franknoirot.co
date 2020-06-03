@@ -1,7 +1,6 @@
 ---
 layout: layouts/home.njk
 ---
-
 <p class='big-statement'>
   I make simple <a href='/work' class='theme-1'>tools</a> using code.<br>
   I live in New York City and work at <a href='https://www.netamorphosis.com' rel='noopener noreferrer' target='_blank' class='theme-2'class='theme-2'>netamorphosis</a>.<br>
@@ -20,12 +19,13 @@ layout: layouts/home.njk
   <section class='work-col'>
     <h2>Latest Work</h2>
     {% set workLength = 4 %}
-    {%- for i, workItem in work -%}
+    {%- for workItem in work | sortWorkByDate -%}
     {%- if workItem.isPublic and workLength > 0 -%}
     <li>
       <a class='work-item' href='{% if workItem.isLocal %}/work{% endif %}{{ workItem.path }}'
-      {%- if not workItem.isLocal -%}target='_blank' rel='noopener noreferrer'{%- endif -%}
-      style='color: {{  workItem.themeColor }}'>{{ workItem.name }}</a>
+      {%- if not workItem.isLocal -%}target='_blank' rel='noopener noreferrer'{%- endif -%}>
+      <span class='work-date'>{{ workItem.lastUpdatedMMDD }}</span>
+      {{ workItem.name }}</a>
     </li>
     {% set workLength = workLength - 1 %}
     {%- endif -%}

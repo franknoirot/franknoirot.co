@@ -1,5 +1,7 @@
 {
     "name": "SEO Checker",
+    "lastUpdated": "2020-02-15",
+    "lastUpdatedMMDD": "02/15",
     "isLocal": true,
     "isPublic": true,
     "path": "/seo-checker",

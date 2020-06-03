@@ -7,6 +7,14 @@ const markdownIt = require("markdown-it");
 const markdownItAnchor = require("markdown-it-anchor");
 
 module.exports = function(eleventyConfig) {
+  eleventyConfig.addFilter("sortWorkByDate", function(workDirObj) {
+    const workArr = Object.keys(workDirObj)
+      .map(key => workDirObj[key])
+      .sort((a, b) => (a.lastUpdated > b.lastUpdated) ? -1 : 1)
+    console.log('WORK = ', workArr)
+    return workArr
+  });
+
   eleventyConfig.addPlugin(pluginRss);
   eleventyConfig.addPlugin(pluginSyntaxHighlight);
   eleventyConfig.addPlugin(pluginNavigation);

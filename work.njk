@@ -9,7 +9,7 @@ eleventyNavigation:
 
 <h1>My Work</h1>
 <ul>
-{%- for i, workItem in work -%}
+{%- for i, workItem in work | sortWorkByDate -%}
 {%- if workItem.isPublic -%}
 <li><a href='{% if workItem.isLocal %}/work{% endif %}{{ workItem.path }}'
   {%- if not workItem.isLocal -%}target='_blank' rel='noopener noreferrer'{%- endif -%}

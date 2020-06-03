@@ -256,6 +256,7 @@ a[href].direct-link:focus:visited,
   border-bottom: solid 1px;
 }
 
+
 .writing-col,
 .writing-col a {
   color: var(--theme-color-1-dark);
