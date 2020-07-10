@@ -23,8 +23,8 @@ eleventyNavigation:
     {% include "postslist.njk" %}
     <div class='pointer work-pointer'></div>
     <div class='screenshot-container'>
-      {% for workItem in work | sortWorkByDate %}
-      <img src="{{ workItem.image }}">
+      {% for post in postslist | reverse %}
+      <img src="{{ post.data.featuredImg }}">
       {% endfor %}
     </div>
   </section>

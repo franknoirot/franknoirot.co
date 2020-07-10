@@ -14,7 +14,9 @@
 * {
   box-sizing: border-box;
 }
-html,
+:root {
+  overflow-x: hidden;
+}
 body {
   box-sizing: border-box;
   padding: 0;
@@ -22,7 +24,6 @@ body {
   font-family: system-ui, sans-serif;
   font-family: var(--font-family);
   color: var(--darkgray);
-  overflow-x: hidden;
   background: var(--background); 
   position: relative;
   min-height: 100vh;
@@ -266,7 +267,7 @@ a[href].direct-link:focus:visited,
 /* Work page */
 .tmpl-work,
 .tmpl-writing {
-  margin-bottom: 50vh;
+  margin-bottom: 40vh;
 }
 
 
@@ -376,6 +377,14 @@ a[href].direct-link:focus:visited,
   stroke: var(--theme-color-2-dark);
 }
 
+.arrow-link svg {
+  transition: transform .12s ease-in-out;
+}
+
+.arrow-link:hover svg {
+  transform: translateX(.25rem);
+}
+
 .list-container {
   padding: 0;
   overflow-y: auto;
@@ -465,7 +474,7 @@ a[href].direct-link:focus:visited,
   width: 5vw;
   height: 2px;
   background: var(--theme-color-2);
-  top: 25rem;
+  top: calc(13rem + 15vh);
   right: 48vw;
   z-index: 1;
 }
@@ -504,7 +513,7 @@ a[href].direct-link:focus:visited,
   background: var(--background);
   position: fixed;
   right: 53vw;
-  top: 20rem;
+  top: calc(10rem + 10vh);
   overflow: hidden;
 }
 
@@ -558,6 +567,15 @@ max-height: 20rem;
 margin: auto;
 }
 
+footer {
+  box-sizing: border-box;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  max-width: 1366px;
+  margin: 0 auto;
+  padding: 1vh 1vw;
+}
 
 
 @media (orientation: portrait) {
