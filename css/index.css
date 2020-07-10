@@ -437,7 +437,7 @@ a[href].direct-link:focus:visited,
   background: var(--theme-color-1-dark);
 }
 .writing-col li::after {
-  background: hsla(var(--theme-hue-2), 70%, 20%, 0.3);
+  background: hsla(var(--theme-hue-1), 70%, 20%, 0.3);
   left: 0;
   right: unset;
 }

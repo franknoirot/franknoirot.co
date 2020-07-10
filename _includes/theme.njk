@@ -10,7 +10,11 @@
 
     {% for colorName, color in theme %}
     a.theme-{{loop.index}}:hover {
-        color: hsl(var(--theme-hue-{{loop.index}}), 60%, 70%);
+        color: hsl(var(--theme-hue-{{loop.index}}), 60%, 65%);
+    }
+
+    a.theme-{{loop.index}}:hover path {
+        fill: hsl(var(--theme-hue-{{loop.index}}), 60%, 65%);
     }
     {% endfor %}
 </style>
