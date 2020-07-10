@@ -7,7 +7,7 @@ description: Thoughts on URLs, and I added a tiny API to my site to let you
 tags:
   - post
   - code
-featuredImg: /img/goofy-google-fonts.png
+featuredImg: /img/goofy-google-fonts.jpg
 ---
 URLs are amazing. Not only are they the backbone of the web, they're a great metaphor for a nearly-universal model of making things accessible and interrelated. My favorite apps around today are using URLs in amazing ways. Look at how Figma exposes the ability to link to specific areas of your project and share them, or how much convenience magic links add to authentication for apps like Slack. 
 
