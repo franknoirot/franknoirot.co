@@ -574,6 +574,7 @@ footer {
   justify-content: space-between;
   max-width: 1366px;
   margin: 0 auto;
+  margin-top: 15vh;
   padding: 1vh 1vw;
 }
 
