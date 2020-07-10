@@ -1,13 +1,13 @@
 ---
-title: 'URLs, Query Params, and Goofy Google Fonts'
+title: URLs, Query Params, and Goofy Google Fonts
 layout: layouts/post.njk
 date: 2020-03-17T04:58:39.967Z
-description: >-
-  Thoughts on URLs, and I added a tiny API to my site to let you change the
-  fonts to anything on Google Fonts.
+description: Thoughts on URLs, and I added a tiny API to my site to let you
+  change the fonts to anything on Google Fonts.
 tags:
   - post
   - code
+featuredImg: /img/20-03-15_gh-actions_secrets.jpg
 ---
 URLs are amazing. Not only are they the backbone of the web, they're a great metaphor for a nearly-universal model of making things accessible and interrelated. My favorite apps around today are using URLs in amazing ways. Look at how Figma exposes the ability to link to specific areas of your project and share them, or how much convenience magic links add to authentication for apps like Slack. 
 
