@@ -5,6 +5,7 @@ date: 2020-03-15T16:32:36.167Z
 description: Automating adding side projects to my portfolio site
 tags:
   - code
+featuredImg: /img/github-actions.jpg
 ---
 Here's a way to add side projects to your static-site generator (SSG) portfolio site by just pushing to GitHub!
 
