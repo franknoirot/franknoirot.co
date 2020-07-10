@@ -5,5 +5,7 @@
     "isLocal": true,
     "isPublic": true,
     "path": "/seo-checker",
-    "themeColor": "rebeccapurple"
+    "themeColor": "rebeccapurple",
+    "tools": "Svelte.js",
+    "image": "/img/work-screenshots/seo-checker.png"
 }

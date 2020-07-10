@@ -1,0 +1,44 @@
+---
+layout: layouts/base.njk
+---
+{{ content | safe }}
+<script>
+  const landingType = Array.from(document.querySelector('main').classList).some(cssClass => cssClass.includes('work')) ? 'work' : 'writing'
+  const angleMeasureSide = (landingType === 'work') ? 'left' : 'right'
+
+  const pointer = [document.querySelector('.pointer'), document.querySelector('.pointer').getBoundingClientRect()]
+  const itemImages = Array.from(document.querySelector('.screenshot-container').children)
+  const items = Array.from(document.querySelectorAll(`.${ landingType }-item`)).map((item, i) => [item, item.getBoundingClientRect(), itemImages[i]])
+
+
+  const getRectVMiddle = (rect) => rect.top + rect.height / 2
+
+  window.addEventListener('load', updateScreenshots)
+  window.addEventListener('scroll', updateScreenshots)
+  
+  function updateScreenshots() {
+    function getRectDist(pointerRect, itemRect) {
+      return getRectVMiddle(itemRect) - window.scrollY - getRectVMiddle(pointerRect)
+    }
+
+    items.forEach(item => {
+      item[2].classList.remove('active')
+      item[2].classList = (getRectDist(pointer[1], item[1]) > 0) ? 'below' : 'above'
+    })
+
+    const nearestItem = items.sort(([itemA, itemARect], [itemB, itemBRect]) => {
+      return Math.abs(getRectDist(pointer[1], itemARect)) - Math.abs(getRectDist(pointer[1], itemBRect))
+    })[0]
+
+    nearestItem[2].classList.remove('above')
+    nearestItem[2].classList.remove('below')
+    nearestItem[2].classList.add('active')
+
+    const flipV = (((getRectVMiddle(nearestItem[1]) - window.scrollY) > getRectVMiddle(pointer[1])) ? 1 : -1)
+    const flipH = ((landingType === 'work') ? 1 : -1)
+
+    let rotationAngle = flipH * flipV * 90 - (Math.atan(Math.abs((nearestItem[1][angleMeasureSide] - pointer[1].left)) / (getRectVMiddle(nearestItem[1]) - getRectVMiddle(pointer[1]) - window.scrollY)) * (180/Math.PI)) * flipH
+
+    pointer[0].style.setProperty('--rotation', rotationAngle+'deg')
+  }
+</script>

@@ -1,18 +1,50 @@
 ---
-layout: layouts/home.njk
+layout: layouts/landing.njk
+templateClasses:
+  - tmpl-home
+  - tmpl-work
 permalink: /work/
 title: work
 eleventyNavigation:
   key: work
   order: 1
 ---
-
-<h1>My Work</h1>
-<ul>
-{%- for i, workItem in work | sortWorkByDate -%}
-{%- if workItem.isPublic -%}
-<li><a href='{% if workItem.isLocal %}/work{% endif %}{{ workItem.path }}'
-  {%- if not workItem.isLocal -%}target='_blank' rel='noopener noreferrer'{%- endif -%}
-  style='color: {{  workItem.themeColor }}'>{{ workItem.name }}</a></li>
-{%- endif -%}
-{%- endfor -%}
+{%- set currentYear = dateFns.currentYear -%}
+<p class='big-statement'>
+  I'm currently making small semi-automate internal tools, an <a class='theme-1' href='https://ringofkeys.org' target='_blank' rel='noopener noreferrer'>artist directory app</a>, and portfolio websites. 
+</p>
+<div class='two-col'>
+  <section class='writing-col'>
+  </section>
+  <section class='work-col'>
+    <h2><strong>Work</strong></h2>
+    <ul class='list-container'>
+    {%- for workItem in work | sortWorkByDate -%}
+      {%- if workItem.isPublic -%}
+        {%- set updatedYear = workItem.lastUpdated.slice(0,4) | int -%}
+      <li {% if currentYear > updatedYear %}
+            {%- set currentYear = updatedYear -%}
+            style="--year: '{{ currentYear }}';"
+          {% endif %}>
+        <a class='work-item' href='{% if workItem.isLocal %}/work{% endif %}{{ workItem.path }}'
+        {%- if not workItem.isLocal -%}target='_blank' rel='noopener noreferrer'{%- endif -%}>
+          <span class='work-date'>{{ workItem.lastUpdatedMMDD }}</span>
+          <div>
+            <p class='work-name'>{{ workItem.name }}</p>
+            <p class='work-tools'>{{ workItem.tools }}</p>
+          </div>  
+        </a>
+      </li>
+      {%- endif -%}
+    {%- endfor -%}
+    </ul>
+    <div class='pointer work-pointer'></div>
+    <div class='screenshot-container'>
+      {% for workItem in work | sortWorkByDate %}
+      {% if workItem.isPublic %}
+      <img src="{{ workItem.image }}">
+      {% endif %}
+      {% endfor %}
+    </div>
+  </section>
+</div>

@@ -1,0 +1,11 @@
+{
+    "name": "Quiz Builder",
+    "lastUpdated": "2020-07-04",
+    "lastUpdatedMMDD": "07/04",
+    "isLocal": false,
+    "isPublic": false,
+    "path": "https://awe-goddess-quiz.netlify.app",
+    "themeColor": "#f0edc0",
+    "tools": "Svelte.js, Strapi, Shopify",
+    "image": "/img/work-screenshots/quiz-builder.png"
+}

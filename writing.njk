@@ -1,13 +1,32 @@
 ---
-layout: layouts/home.njk
+layout: layouts/landing.njk
+templateClasses:
+  - tmpl-home
+  - tmpl-writing
 permalink: /writing/
 title: writing
 eleventyNavigation:
   key: writing
   order: 2
 ---
-
-<h1>Writing</h1>
-
 {% set postslist = collections.posts %}
-{% include "postslist.njk" %}
+{%- set currentYear = dateFns.currentYear -%}
+<p class='big-statement'>
+  I'm currently trying to write about <a href='/posts/side-projects-github-actions/' class='theme-1'>workflows</a>, web dev beginner guides, open data, and NYC History.
+</p>
+<div class='two-col'>
+  <section class='writing-col'>
+    {%- set currentYear = dateFns.currentYear -%}
+    <h2><strong>Writing</strong></h2>
+    {% set postslist = collections.posts %}
+    {% set postslistCounter = collections.posts | length %}
+    {% include "postslist.njk" %}
+    <div class='pointer work-pointer'></div>
+    <div class='screenshot-container'>
+      {% for workItem in work | sortWorkByDate %}
+      <img src="{{ workItem.image }}">
+      {% endfor %}
+    </div>
+  </section>
+</div>
+

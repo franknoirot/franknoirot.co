@@ -5,5 +5,7 @@
     "isLocal": false,
     "isPublic": true,
     "path": "https://meganrodgers.me",
-    "themeColor": "hsl(110deg, 80%, 25%)"
+    "themeColor": "hsl(110deg, 80%, 25%)",
+    "tools": "Gatsby.js, NetlifyCMS",
+    "image": "/img/work-screenshots/megan-rodgers.png"
 }

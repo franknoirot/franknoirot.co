@@ -5,5 +5,7 @@
     "isLocal": false,
     "isPublic": true,
     "path": "https://ringofkeys.org",
-    "themeColor": "hsl(40deg, 60%, 36%)"
+    "themeColor": "hsl(40deg, 60%, 36%)",
+    "tools": "Gatsby.js, DatoCMS, Auth0, Twilio",
+    "image": "/img/work-screenshots/ring-of-keys.png"
 }

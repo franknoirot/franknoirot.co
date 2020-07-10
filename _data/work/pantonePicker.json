@@ -5,5 +5,7 @@
     "path": "/pantone-picker",
     "isLocal": true,
     "isPublic": true,
-    "themeColor": "hsl(200deg, 70deg, 60%);"
+    "themeColor": "hsl(200deg, 70deg, 60%);",
+    "tools": "Svelte.js",
+    "image": "/img/work-screenshots/pantone-picker.png"
 }

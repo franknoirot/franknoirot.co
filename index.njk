@@ -1,5 +1,7 @@
 ---
 layout: layouts/home.njk
+templateClasses:
+  - tmpl-home
 ---
 <p class='big-statement'>
   I make simple <a href='/work' class='theme-1'>tools</a> using code.<br>
@@ -8,6 +10,7 @@ layout: layouts/home.njk
 </p>
 <div class='two-col'>
   <section class='writing-col'>
+    {%- set currentYear = dateFns.currentYear -%}
     <h2>Latest Writing</h2>
     {% set postslist = collections.posts | head(-4) %}
     {% set postslistCounter = collections.posts | length %}
@@ -21,11 +24,19 @@ layout: layouts/home.njk
     {% set workLength = 4 %}
     {%- for workItem in work | sortWorkByDate -%}
     {%- if workItem.isPublic and workLength > 0 -%}
-    <li>
+      {%- set updatedYear = workItem.lastUpdated.slice(0,4) | int -%}
+    <li {% if currentYear > updatedYear %}
+          {%- set currentYear = updatedYear -%}
+          style="--year: '{{ currentYear }}';"
+        {% endif %}>
       <a class='work-item' href='{% if workItem.isLocal %}/work{% endif %}{{ workItem.path }}'
       {%- if not workItem.isLocal -%}target='_blank' rel='noopener noreferrer'{%- endif -%}>
-      <span class='work-date'>{{ workItem.lastUpdatedMMDD }}</span>
-      {{ workItem.name }}</a>
+        <span class='work-date'>{{ workItem.lastUpdatedMMDD }}</span>
+        <div>
+          <p class='work-name'>{{ workItem.name }}</p>
+          <p class='work-tools'>{{ workItem.tools }}</p>
+        </div>  
+      </a>
     </li>
     {% set workLength = workLength - 1 %}
     {%- endif -%}
