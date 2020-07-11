@@ -267,7 +267,7 @@ a[href].direct-link:focus:visited,
 /* Work page */
 .tmpl-work,
 .tmpl-writing {
-  margin-bottom: 40vh;
+  margin-bottom: 45vh;
 }
 
 
@@ -309,7 +309,7 @@ a[href].direct-link:focus:visited,
   right: -50vw;
   top: -4vh;
   left: -4vw;
-  bottom: -2vh;
+  bottom: -3vh;
   z-index: -4;
 }
 
@@ -320,7 +320,7 @@ a[href].direct-link:focus:visited,
   left: -50vw;
   top: -4vh;
   right: -4vw;
-  bottom: -2vh;
+  bottom: -3vh;
   z-index: -4;
 }
 

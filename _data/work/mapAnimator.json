@@ -2,9 +2,9 @@
     "name": "Map Animator",
     "lastUpdated": "2020-04-01",
     "lastUpdatedMMDD": "04/01",
-    "isLocal": false,
+    "isLocal": true,
     "isPublic": true,
-    "path": "https://franknoirot.co/map-animator",
+    "path": "/map-animator",
     "themeColor": "rebeccapurple",
     "tools": "Svelte.js, D3.js",
     "image": "/img/work-screenshots/map-animator.png"
