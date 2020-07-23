@@ -13,8 +13,10 @@ code[class*="language-"], pre[class*="language-"] {
 	-moz-hyphens: none;
 	-ms-hyphens: none;
 	hyphens: none;
-	background: #272822;
 	color: #f8f8f2;
+}
+pre[class*="language-"] {
+	background: #272822;
 }
 pre[class*="language-"] {
 	padding: 1.5em 2em;
