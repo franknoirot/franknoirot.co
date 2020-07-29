@@ -553,6 +553,41 @@ a[href].direct-link:focus:visited,
   --swipe-dir: 1;
 }
 
+.steezy-img { position: relative; }
+.steezy-img::before,
+.steezy-img::after {
+  content: '';
+  position: absolute;
+  width: 50%;
+  height: 20%;
+}
+.steezy-img::after {
+  --float-fac: 5%;
+  --init-trans: translate(50%) skew(-10deg);
+  z-index: 1;
+  bottom: 10%;
+  right: 0;
+  transform: var(--init-trans);
+  background: linear-gradient(to right, var(--theme-color-1), var(--theme-color-2));
+  animation: float-around 12s ease-in-out infinite;
+}
+.steezy-img::before {
+  --float-fac: 10%;
+  --init-trans: translate(-30%) skew(10deg);
+  z-index: -1;
+  top: 10%;
+  left: 0;
+  transform: var(--init-trans);
+  border-image: linear-gradient(var(--theme-color-1), var(--theme-color-2)) 20;
+  border-style: solid;
+  animation: float-around 6s .5s ease-in-out infinite;
+}
+@keyframes float-around {
+  0%   { transform: var(--init-trans) translate(calc(-1 * var(--float-fac))); }
+  50%  { transform: var(--init-trans) translate(calc(1 * var(--float-fac))); }
+  100% { transform:  var(--init-trans) translate(calc(-1 * var(--float-fac))); }
+}
+
 /* LIBRARY */
 .book-grid {
   --gap: 2em;
