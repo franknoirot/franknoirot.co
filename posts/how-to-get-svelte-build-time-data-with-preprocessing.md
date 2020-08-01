@@ -1,5 +1,5 @@
 ---
-title: How to get Svelte build-time data with preprocessing
+title: How to Get Svelte Build-Time Data with Preprocessing
 layout: layouts/post.njk
 date: 2020-08-01T05:44:55.758Z
 description: Set up a pipeline that lets us bake data into our Svelte app at
@@ -15,13 +15,13 @@ There actually is a pretty straightforward way to seed data into your app by def
 
 There are plenty of ways around this problem since we have Rollup bundling our code, but there is a way to use just what Svelte makes available so things fit nice and neat. If you're acquainted with Svelte you'll know you can have more than one script tag within you Svelte components: there is a special `<script context='module'>` that only runs once per component, not once per instance of a component. I wanted something like that, a special script tag that I could put the variables and Javascript I wanted into, or better yet put a *filename* to a Javascript file where I can put all the data fetching logic, something like this:
 
-```jsx
-// App.svelte
+```svelte
+<!-- App.svelte -->
 <script role='build-vars'>
 	let fetchedData = 'fetchSomeData.js';
 </script>
 
-// ...use fetchedData throughout your Svelte App (save it to context for superpowers!)
+<!-- ...use fetchedData throughout your Svelte App (save it to context for superpowers!) -->
 ```
 
 I was pleasantly surprised to find you can do that with Svelte!
@@ -97,8 +97,8 @@ module.exports = new Date().toLocaleTimeString() +' '+ new Date().toLocaleDateSt
 
 All this does is export the current date and time in a nice-looking string, but you can call a headless CMS's API, crunch some numbers, anything in here. Now we can add a build-vars script tag to App.svelte, or any component for that matter.
 
-```jsx
-// App.svelte
+```svelte
+<!-- App.svelte -->
 <script role='build-vars'>
 	let buildTime = 'buildTime.js'
 </script>
