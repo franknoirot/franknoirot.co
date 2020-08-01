@@ -15,7 +15,7 @@ There actually is a pretty straightforward way to seed data into your app by def
 
 There are plenty of ways around this problem since we have Rollup bundling our code, but there is a way to use just what Svelte makes available so things fit nice and neat. If you're acquainted with Svelte you'll know you can have more than one script tag within you Svelte components: there is a special `<script context='module'>` that only runs once per component, not once per instance of a component. I wanted something like that, a special script tag that I could put the variables and Javascript I wanted into, or better yet put a *filename* to a Javascript file where I can put all the data fetching logic, something like this:
 
-```svelte
+```html
 <!-- App.svelte -->
 <script role='build-vars'>
 	let fetchedData = 'fetchSomeData.js';
@@ -97,7 +97,7 @@ module.exports = new Date().toLocaleTimeString() +' '+ new Date().toLocaleDateSt
 
 All this does is export the current date and time in a nice-looking string, but you can call a headless CMS's API, crunch some numbers, anything in here. Now we can add a build-vars script tag to App.svelte, or any component for that matter.
 
-```svelte
+```html
 <!-- App.svelte -->
 <script role='build-vars'>
 	let buildTime = 'buildTime.js'
