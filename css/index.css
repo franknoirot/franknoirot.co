@@ -216,7 +216,7 @@ pre {
 
 
 /* Tags */
-.tag {
+.post-tag {
   display: block;
   width: max-content;
   text-transform: uppercase;
@@ -229,11 +229,11 @@ pre {
   border-radius: 0.2em; /* 3px /12 */
   text-decoration: none;
 }
-.tag:first-child {
+.post-tag:first-child {
   margin-left: 0;
 }
-a[href].tag,
-a[href].tag:visited {
+a[href].post-tag,
+a[href].post-tag:visited {
   color: #fff;
 }
 
@@ -420,7 +420,7 @@ a[href].direct-link:focus:visited,
 }
 
 .work-tools,
-.writing-item > div .tag {
+.writing-item > div .post-tag {
   font-size: .7em;
 }
 
@@ -434,7 +434,7 @@ a[href].direct-link:focus:visited,
   stroke: var(--theme-color-1-dark);
 }
 .writing-col li::before,
-.writing-col .tag {
+.writing-col .post-tag {
   background: var(--theme-color-1-dark);
 }
 .writing-col li::after {
