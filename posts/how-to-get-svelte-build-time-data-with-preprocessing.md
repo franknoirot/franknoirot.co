@@ -11,7 +11,9 @@ featuredImg: /img/svelte-build-vars.jpg
 ---
 I really enjoy coding in Svelte. I've built a few small tools and toys with it, and I'm getting opportunity to use it in production for the first time right now. But one thing that I've been missing from other toolsets is the ability to run code at build time to calculate or fetch data and pepper it into my Svelte app. [11ty](http://11ty.dev) calls this the Data Layer and [Gatsby](http://gatsbyjs.org) calls it the GraphQL layer.
 
-There actually is a pretty straightforward way to seed data into your app by defining key value pairs on the optional `props` object when initializing the `App` component. The problem is, this code runs on the frontend Everytime the app is loaded. Fetching some REST API makes the whole speed boost of Svelte irrelevant real quick.
+## Defining "build-time data"
+
+There actually is a pretty straightforward way to seed data into your app by defining key value pairs on the optional `props` object when initializing the `App` component. The problem is, this code runs on the frontend every time the app is loaded. Fetching some REST API every page load makes the whole speed boost of Svelte irrelevant real quick.
 
 There are plenty of ways around this problem since we have Rollup bundling our code, but there is a way to use just what Svelte makes available so things fit nice and neat. If you're acquainted with Svelte you'll know you can have more than one script tag within you Svelte components: there is a special `<script context='module'>` that only runs once per component, not once per instance of a component. I wanted something like that, a special script tag that I could put the variables and Javascript I wanted into, or better yet put a *filename* to a Javascript file where I can put all the data fetching logic, something like this:
 
@@ -26,7 +28,9 @@ There are plenty of ways around this problem since we have Rollup bundling our c
 
 I was pleasantly surprised to find you can do that with Svelte!
 
-Svelte does all its compiling work as a Rollup plugin - or WebPack if you use that variant; Rollup is the default starter project's build system. The Svelte plugin within the rollup.config.js file can be passed a configuration object, and one optional configuration is a [preprocess](https://svelte.dev/docs#svelte_preprocess) object, seen here: 
+## Svelte.preprocess
+
+Svelte does all its compiling work as a Rollup plugin - or [WebPack](https://github.com/sveltejs/template-webpack) if you use that variant; Rollup is the [default starter project's](https://github.com/sveltejs/template) build system. The Svelte plugin within the `rollup.config.js` file can be passed a configuration object, and one optional configuration is a [preprocess](https://svelte.dev/docs#svelte_preprocess) object, seen here: 
 
 ```jsx
 // rollup.config.js
@@ -88,6 +92,8 @@ export default async ({ content, attributes }) => {
 
 Great! Now we've created a tool that lets us pepper in arbitrary baked-in data at build time. Let try it out with a simple example: an app that displays the time it was last rebuilt.
 
+## Using our custom preprocesser
+
 Let's right the data "fetching" logic first, and save it in `buildTime.js`
 
 ```jsx
@@ -95,7 +101,7 @@ Let's right the data "fetching" logic first, and save it in `buildTime.js`
 module.exports = new Date().toLocaleTimeString() +' '+ new Date().toLocaleDateString()
 ```
 
-All this does is export the current date and time in a nice-looking string, but you can call a headless CMS's API, crunch some numbers, anything in here. Now we can add a build-vars script tag to App.svelte, or any component for that matter.
+All this does is export the current date and time in a nice-looking string, but you can call a headless CMS's API, crunch some numbers, anything in here. Now we can add a build-vars script tag to `App.svelte`, or any component for that matter.
 
 ```html
 <!-- App.svelte -->
