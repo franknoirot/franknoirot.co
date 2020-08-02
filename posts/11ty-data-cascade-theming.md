@@ -13,7 +13,7 @@ featuredImg: /img/11ty-theme.jpg
 
 To try out this concept while building my new portfolio site, I decided to use it to randomly generate the two colors that make up the theme of my site.
 
-The first file this uses is `/_data/theme.js`, which defines two random colors and builds an object of two values we'll use in our CSS.
+The first file this uses is `/_data/theme.js`, which defines two random colors and builds an object with two values we'll use in our CSS.
 
 ```jsx
 // set a random hue, then get the hues 100 and 200deg away from it
@@ -81,7 +81,7 @@ The only other thing we need is an *include* called `theme.njk` (I used Nunjucks
 
 </div>
 
-In this file we loop over each of the colors created in our `theme.js` file, which is available simply as `theme`, and create a series of CSS custom properties we can then use throughout our site. Just for fun I added some classes that give links a with a theme class a hover color too.
+In this file we loop over each of the colors created in our `theme.js` file, which is available simply as `theme`, and create a series of CSS custom properties we can then use throughout our site. Just for fun I added some classes that give links with a theme class a hover color too.
 
 Now I *include* this include into my `base.njk` template that every page inherits from.
 
@@ -97,6 +97,6 @@ Now I *include* this include into my `base.njk` template that every page inherit
   <!-- more HTML and whatnot -->
 ```
 
-Just like that I've got a bunch of theme CSS variables available for me to color things across the site with that are randomly determined at build time! I use it to color the wave SVG on the home page, and `theme-color-1` is used for all my writing while `theme-color-2` represents all my work.
+And just like that I've got a bunch of theme CSS variables available for me to color things across the site with which are randomly determined at build time! I use it to color the wave SVG on the home page, and `theme-color-1` is used for all my writing while `theme-color-2` represents all my work.
 
-I never know what colors my site will have until after I rebuild it, which makes the process just a bit more fun. Currently theme color 1 is `{{ theme.color1.hue }}` and color 2 is `{{ theme.color2.hue }}`. And if I don't like them, well that just that little nudge I need to write my next post.
+I never know what colors my site will have until after I rebuild it, which makes the process just a bit more fun. Currently theme color 1 is `{{ theme.color1.hue }}` and color 2 is `{{ theme.color2.hue }}`. And if I don't like them, well that's just that little nudge I need to write my next post.
