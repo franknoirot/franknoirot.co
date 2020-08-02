@@ -1,0 +1,11 @@
+{
+    "name": "Personal Library Site",
+    "lastUpdated": "2020-07-25",
+    "lastUpdatedMMDD": "07/25",
+    "isLocal": false,
+    "isPublic": true,
+    "path": "https://franknoirot.bookshelf.network",
+    "themeColor": "paleblue",
+    "tools": "Google Sheets, 11ty",
+    "image": "/img/work-screenshots/personal-library.jpg"
+}
