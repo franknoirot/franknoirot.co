@@ -9,7 +9,7 @@ tags:
   - code
 featuredImg: /img/11ty-theme.jpg
 ---
-11ty has this excellent notion of the [Data Cascade](https://github.com/franknoirot/franknoirot.co/blob/master/_includes/layouts/base.njk), which will be familiar to users of CSS. One element of that Cascade is that any JavaScript (or JSON) you place within the `/_data` directory of your project will be read at build time, and if the JavaScript exports an object it will be included within a global data object as a parameter with the same name as the file. JSON files get rolled in in the same way. You can then use that data within you template files with data.fileName.parameterName.
+11ty has this excellent notion of the [Data Cascade](https://www.11ty.dev/docs/data-cascade/), which will be familiar to users of CSS. One element of that Cascade is that any JavaScript (or JSON) you place within the `/_data` directory of your project will be read at build time, and if the JavaScript exports an object it will be included within a global data object as a parameter with the same name as the file. JSON files get rolled in in the same way. You can then use that data within your template files with `fileName.parameterName`.
 
 To try out this concept while building my new portfolio site, I decided to use it to randomly generate the two colors that make up the theme of my site.
 
