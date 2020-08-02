@@ -51,6 +51,8 @@ function hsl2rgb(h, s, l) {
 
 The only other thing we need is an include called `theme.njk` (I used Nunjucks for my website but can use a number of template languages). Includes are snippets of code that you can save as separate files within an `/_includes` directory, then drop into your template files. Nunjucks is usually used for HTML, but this file will just be a style tag so we can use Nunjucks' superpowers in our CSS.
 
+<div class='steezy-pre'>
+
 ```html
 <!-- /_includes/theme.js -->
 <style id='theme-data'>
@@ -76,6 +78,8 @@ The only other thing we need is an include called `theme.njk` (I used Nunjucks f
     {% endraw %}
 </style>
 ```
+
+</div>
 
 In this file we loop over each of the colors created in our theme.js file, which is available simply as theme, and create a series of CSS custom properties we can then use throughout our site. Just for fun I added some classes that give links a with a theme class a hover color too.
 

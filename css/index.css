@@ -561,22 +561,32 @@ p code {
   border-radius: 0.2em;
 }
 
-.steezy-img {
+.tmpl-post img {
+  margin: 1em auto;
+  box-shadow: 0 .2em .6em rgba(0,0,0,.15),
+              0 .5em .9em rgba(0,0,0,0.07);
+}
+
+.steezy,
+.steezy-pre {
   position: relative;
   width: 100%;
 }
-.steezy-img > img {
+.steezy > img {
   max-width: 100%;
   display: block;
 }
-.steezy-img::before,
-.steezy-img::after {
+.steezy::before,
+.steezy::after,
+.steezy-pre::before,
+.steezy-pre::after {
   content: '';
   position: absolute;
   width: 50%;
   height: 20%;
 }
-.steezy-img::after {
+.steezy::after,
+.steezy-pre::after {
   --float-fac: 5%;
   --init-trans: translate(50%) skew(-10deg);
   z-index: 1;
@@ -586,7 +596,13 @@ p code {
   background: linear-gradient(to right, var(--theme-color-1), var(--theme-color-2));
   animation: float-around 12s ease-in-out infinite;
 }
-.steezy-img::before {
+.steezy-pre::after {
+  --float-fac: 4%;
+  --init-trans: translate(20%) skew(-10deg);
+  z-index: -1;
+}
+.steezy::before,
+.steezy-pre::before {
   --float-fac: 10%;
   --init-trans: translate(-30%) skew(10deg);
   z-index: -1;
@@ -596,6 +612,10 @@ p code {
   border-image: linear-gradient(var(--theme-color-1), var(--theme-color-2)) 20;
   border-style: solid;
   animation: float-around 6s .5s ease-in-out infinite;
+}
+.steezy-pre::before {
+  --float-fac: 5%;
+  --init-trans: translate(-10%) skew(10deg);
 }
 @keyframes float-around {
   0%   { transform: var(--init-trans) translate(calc(-1 * var(--float-fac))); }

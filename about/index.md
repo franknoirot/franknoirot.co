@@ -9,7 +9,7 @@ eleventyNavigation:
 
 I'm Frank. I was born outside of Akron, Ohio, a small city a bit south of the Great Lakes in the United States. I now live in the Washington Heights neighborhood of New York City. I use he/him pronouns.
 
-<div class='steezy-img'>
+<div class='steezy'>
   <img alt='Frank sitting on a ledge outside his apartment building.' src='/img/about-frank.jpg'>
 </div>
 

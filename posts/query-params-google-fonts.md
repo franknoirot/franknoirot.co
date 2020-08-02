@@ -42,6 +42,8 @@ Try it out now. Here's this page with [Bellota](./?font=Bellota#google-fonts-cha
 
 Here's the entire script to make this possible:
 
+<div class='steezy-pre'>
+
 ```javascript
 window.addEventListener('load', () => {
   const searchParams = new URLSearchParams(window.location.search)
@@ -59,8 +61,9 @@ window.addEventListener('load', () => {
   document.body.style.setProperty('--font-family', fontVal.replace('+', ' '))
 })
 ```
+</div>
 
-The `URLSearchParams `interface is your tool to parse those params. The `window.location.search` property is the portion of your page's URL starting with the "?" that begins the query parameters. If you pass that into the `URLSearchParams `you are returned an Iterator that you can work with much like a Object.
+The `URLSearchParams` interface is your tool to parse those params. The `window.location.search` property is the portion of your page's URL starting with the "?" that begins the query parameters. If you pass that into the `URLSearchParams` you are returned an Iterator that you can work with much like a Object.
 
 The `.has(someName)` method returns `true` or `false` whether a parameter with the name "someName" was found. If we do find the "font" parameter on our URL, we get its value by calling the `.get(someName)` method.
 

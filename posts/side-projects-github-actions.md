@@ -56,6 +56,8 @@ Within the root of your side project directory, create a file within the folder 
 
 Here is the content within `main.yml`. We'll step through it below.
 
+<div class='steezy-pre'>
+
 ```yaml
 {% raw %}
 # This is a basic workflow to help you get started with Actions
@@ -113,6 +115,8 @@ jobs:
 {% endraw %}
 ```
 
+</div>
+
 First we name our Workflow and what triggers it. In our case, this will run on any push or pull request to the side project, but you could also add in a `tag` list so that it only runs on proper "releases". This is helpful if you'll be doing a lot of development on your side project and don't want to eat up your build minutes on GitHub.
 
 Then we describe our list of named Jobs. The CopyCat Action we used above doesn't seem to like being used twice in the same job. So I've split out our two copying operations into two jobs, "directory" and "config", but eventually I'd like this to be one step.
@@ -139,13 +143,14 @@ Copy the generated token into your side project's **Secrets** section under the 
 
 We've now finished writing our config file and adding our GitHub Action. Here's what our final code base should look like in our side project repository:
 
-```
+```yaml
 .github/
   | workflows/
     - main.yml
 .portfolio-config.json
 _site/ # this is where 11ty spits out its static files, may be different for your SSG
-...rest of project code
+
+# ...rest of project code
 ```
 
 Push this code to your repository and watch what happens in the Actions tab of your repository on GitHub.com. If all goes well, switch over to your portfolio's repository and see the changes made and committed there!
@@ -166,7 +171,9 @@ For my site I copied each portfolio config into a [work folder](https://github.c
 
 So in my [`work.njk`](https://github.com/franknoirot/franknoirot.co/tree/master/_data/work) file I have the following template logic:
 
-```
+<div class='steezy-pre'>
+
+```html
 <h1>My Work</h1>
 <ul>
 {% raw %}
@@ -183,6 +190,8 @@ So in my [`work.njk`](https://github.com/franknoirot/franknoirot.co/tree/master/
 {%- endfor -%}
 {% endraw %}
 ```
+
+</div>
 
 Here we see Nunjucks + 11ty two-fold magic. First, 11ty takes any separate JSON files within a subdirectory of `_data` and adds each as an entry within a `data` object with the work directory's name. So if your file's path is `_data/work/mapAnimator.json`, then `work.mapAnimator` is accessible on that object. Second, within Nunjucks you can iterate over the keys of an object just like an array, which felt odd and magical to me coming from Javascript.
 

@@ -52,6 +52,8 @@ import compileBuildVars from './svelte-build-vars/index.js'
 
 This function is below. It gets passed in the contents and attributes of every `<script>` tag in all my Svelte components, then checks if has a `role` attribute of "build-vars". If it does, it finds all variables and constants set to file names, runs each of those files and saves the output, then reconstructs a string of valid JavaScript that assigns each file's output to its corresponding variable.
 
+<div class='steezy-pre'>
+
 ```jsx
 // ./svelte-build-vars/index.js
 import fs from 'fs'
@@ -89,6 +91,8 @@ export default async ({ content, attributes }) => {
 
 		return { code }
 ```
+
+</div>
 
 Great! Now we've created a tool that lets us pepper in arbitrary baked-in data at build time. Let try it out with a simple example: an app that displays the time it was last rebuilt.
 
