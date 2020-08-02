@@ -553,6 +553,14 @@ a[href].direct-link:focus:visited,
   --swipe-dir: 1;
 }
 
+p code {
+  display: inline-block;
+  padding: 0em .5em;
+  background: var(--theme-color-2);
+  color: var(--theme-color-2-dark);
+  border-radius: 0.2em;
+}
+
 .steezy-img {
   position: relative;
   width: 100%;

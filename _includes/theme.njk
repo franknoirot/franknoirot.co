@@ -9,11 +9,14 @@
     }
 
     {% for colorName, color in theme %}
-    a.theme-{{loop.index}}:hover {
+    span.theme-{{loop.index}},
+    a.theme-{{loop.index}}:hover,
+    a.theme-{{loop.index}}:focus {
         color: hsl(var(--theme-hue-{{loop.index}}), 60%, 65%);
     }
 
-    a.theme-{{loop.index}}:hover path {
+    a.theme-{{loop.index}}:hover path,
+    a.theme-{{loop.index}}:focus path  {
         fill: hsl(var(--theme-hue-{{loop.index}}), 60%, 65%);
     }
     {% endfor %}
