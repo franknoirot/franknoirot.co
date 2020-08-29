@@ -27,8 +27,20 @@ exports.handler = async function (event, context, callback) {
     try {
         console.log('event.body = ', event.body)
 
+        console.log('event.headers', JSON.stringify(event.headers, null, 2))
+
         // uhh Netlify Identity just comes for free with the request????
-        const { user } = context.clientContext
+        console.log('context', JSON.stringify(context, null, 2))
+
+        const authRes = await fetch('https://tokens.indieauth.com/#verify', {
+            method: 'GET',
+            headers: {
+                'Accept': 'application/json',
+                'Authorization': 'Bearer '+ event.headers.cookie
+            },
+        })
+
+        console.log('res = ', authRes)
 
         console.log('user = ', user)
 
