@@ -73,11 +73,11 @@ async function uploadToRepo(octo, path, content, owner, repo, branch = `master`)
     )
 
     await setBranchToCommit(octo, owner, repo, branch, newCommit.sha)
-
+    console.log('Done!')
 }
 
 async function getCurrCommit(octo, owner, repo, branch = `master`) {
-    const { data: refData } = awawit octo.git.getRef({
+    const { data: refData } = await octo.git.getRef({
         owner,
         repo,
         ref: `heads/${branch}`,
