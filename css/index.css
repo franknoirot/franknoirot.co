@@ -764,6 +764,12 @@ footer {
       clip-path: polygon(50% 0, 100% 0, 100% 100%, 0 100%);
   }
 
+  .screenshot-container img {
+    touch-action: none;
+    user-select: none;
+    pointer-events: none;
+  }
+
   .steezy-pre::before, .steezy-pre::after,
   .steezy-img::before, .steezy-img::after {
     display: none;
