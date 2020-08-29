@@ -1,8 +1,8 @@
 ---
-title: Post 2020-07-29
-slug: my-latest-post
-layout: layouts/post.njk
-date: 2020-07-29
+title: "Post 2020-07-29"
+slug: "my-latest-post"
+layout: "layouts/post.njk"
+date: "2020-07-29"
 tags:
   - post
   - code
