@@ -32,6 +32,9 @@
     "markdown-it-anchor": "^5.2.5"
   },
   "dependencies": {
-    "netlify-cms": "^2.10.32"
+    "@octokit/rest": "^18.0.4",
+    "isomorphic-fetch": "^2.2.1",
+    "netlify-cms": "^2.10.32",
+    "parse-multipart": "^1.0.4"
   }
 }
