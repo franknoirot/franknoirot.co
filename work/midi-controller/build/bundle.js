@@ -712,7 +712,7 @@ var app = (function () {
         }
     }
 
-
+    // utility function for converting any range into 0 to 1
     function normRange(val,min,max) {
         let range = max-min;
         return (val-min)/range;
@@ -808,57 +808,57 @@ var app = (function () {
     			p = element("p");
     			p.textContent = "Set MIDI Input";
     			attr_dev(h2, "class", "output");
-    			add_location(h2, file$1, 33, 4, 900);
+    			add_location(h2, file$1, 35, 4, 1082);
     			attr_dev(input0, "class", "dial-min");
     			attr_dev(input0, "id", input0_id_value = `dial-${/*id*/ ctx[0]}-min`);
     			attr_dev(input0, "type", "number");
-    			add_location(input0, file$1, 37, 16, 1070);
+    			add_location(input0, file$1, 39, 16, 1252);
     			attr_dev(div0, "class", "line");
-    			add_location(div0, file$1, 38, 16, 1171);
+    			add_location(div0, file$1, 40, 16, 1353);
     			attr_dev(div1, "class", "dial-min-inner");
-    			add_location(div1, file$1, 36, 12, 1024);
+    			add_location(div1, file$1, 38, 12, 1206);
     			attr_dev(label0, "for", label0_for_value = `dial-${/*id*/ ctx[0]}-min`);
-    			add_location(label0, file$1, 40, 12, 1229);
+    			add_location(label0, file$1, 42, 12, 1411);
     			attr_dev(div2, "class", "dial-min-wrap");
-    			add_location(div2, file$1, 35, 8, 983);
+    			add_location(div2, file$1, 37, 8, 1165);
     			attr_dev(div3, "class", "dial-line");
     			attr_dev(div3, "style", div3_style_value = `transform: var(--init-trans) rotate(${(/*normalizedOutput*/ ctx[7] - 0.5) * 180}deg`);
-    			add_location(div3, file$1, 44, 16, 1397);
+    			add_location(div3, file$1, 46, 16, 1579);
     			attr_dev(label1, "class", "dial-bg");
     			attr_dev(label1, "for", label1_for_value = `dial-${/*id*/ ctx[0]}`);
-    			add_location(label1, file$1, 43, 12, 1335);
+    			add_location(label1, file$1, 45, 12, 1517);
     			attr_dev(input1, "class", "dial");
     			attr_dev(input1, "id", input1_id_value = `dial-${/*id*/ ctx[0]}`);
     			attr_dev(input1, "type", "range");
     			attr_dev(input1, "step", "any");
     			attr_dev(input1, "min", /*min*/ ctx[3]);
     			attr_dev(input1, "max", /*max*/ ctx[4]);
-    			add_location(input1, file$1, 46, 12, 1546);
+    			add_location(input1, file$1, 48, 12, 1728);
     			attr_dev(div4, "class", "dial-wrap");
-    			add_location(div4, file$1, 42, 8, 1298);
+    			add_location(div4, file$1, 44, 8, 1480);
     			attr_dev(input2, "class", "dial-max");
     			attr_dev(input2, "id", input2_id_value = `dial-${/*id*/ ctx[0]}-max`);
     			attr_dev(input2, "type", "number");
-    			add_location(input2, file$1, 50, 16, 1771);
+    			add_location(input2, file$1, 52, 16, 1953);
     			attr_dev(div5, "class", "line");
-    			add_location(div5, file$1, 51, 16, 1872);
+    			add_location(div5, file$1, 53, 16, 2054);
     			attr_dev(div6, "class", "dial-max-inner");
-    			add_location(div6, file$1, 49, 12, 1725);
+    			add_location(div6, file$1, 51, 12, 1907);
     			attr_dev(label2, "for", label2_for_value = `dial-${/*id*/ ctx[0]}-max`);
-    			add_location(label2, file$1, 53, 12, 1930);
+    			add_location(label2, file$1, 55, 12, 2112);
     			attr_dev(div7, "class", "dial-max-wrap");
-    			add_location(div7, file$1, 48, 8, 1684);
+    			add_location(div7, file$1, 50, 8, 1866);
     			attr_dev(div8, "class", "dial-row");
-    			add_location(div8, file$1, 34, 4, 951);
+    			add_location(div8, file$1, 36, 4, 1133);
     			attr_dev(button, "class", "dial-midi");
-    			add_location(button, file$1, 57, 8, 2047);
+    			add_location(button, file$1, 59, 8, 2229);
     			attr_dev(p, "class", "midi-status");
-    			add_location(p, file$1, 63, 8, 2298);
+    			add_location(p, file$1, 65, 8, 2480);
     			attr_dev(div9, "class", "midi-card-bottom");
-    			add_location(div9, file$1, 56, 4, 2007);
+    			add_location(div9, file$1, 58, 4, 2189);
     			attr_dev(div10, "class", "dial-container");
     			attr_dev(div10, "style", div10_style_value = `--theme: ${/*color*/ ctx[1]}`);
-    			add_location(div10, file$1, 32, 0, 808);
+    			add_location(div10, file$1, 34, 0, 990);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -1010,6 +1010,7 @@ var app = (function () {
     	let midiInput = false;
     	const dispatch = createEventDispatcher();
 
+    	// this callback gets passed into MIDIAccess but lives here where reactivity reigns, best of both worlds
     	function setMIDICallback(input) {
     		if (!midiInput) {
     			$$invalidate(6, midiInput = input);
@@ -1102,6 +1103,7 @@ var app = (function () {
     		}
 
     		if ($$self.$$.dirty & /*output*/ 32) {
+    			// emits a midiinput event to App.svelte every time output updates
     			 if (output) {
     				dispatch("midiinput", output);
     			}
