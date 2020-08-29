@@ -1,1 +1,11 @@
-[object Object]
+{
+  "name": "WebMIDI Controller Prototype",
+  "lastUpdated": "2020-08-28",
+  "lastUpdatedMMDD": "08/28",
+  "isLocal": true,
+  "isPublic": true,
+  "path": "/work/midi-controller",
+  "themeColor": "hsl(310deg, 60%, 65%)",
+  "tools": "Svelte.js, WebMIDI API",
+  "image": false
+}
