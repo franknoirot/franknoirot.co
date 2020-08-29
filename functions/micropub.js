@@ -28,7 +28,7 @@ exports.handler = async function (event, context, callback) {
         console.log('event.body = ', event.body)
 
 
-        const authRes = await fetch('https://tokens.indieauth.com/#verify', {
+        const authRes = await fetch('https://indieauth.com/auth', {
             method: 'GET',
             headers: {
                 'Accept': 'application/json',
@@ -43,7 +43,7 @@ exports.handler = async function (event, context, callback) {
 
 
         // if invalid user, return failure state
-        const tests = [!user, !user.hasOwnProperty('me'), !user.me, event.body.type.indexOf('h-entry') < 0, !event.body.hasOwnProperty('content'), !event.body.content]
+        const tests = [!user || !user.hasOwnProperty('me') || !user.me, event.body.type.indexOf('h-entry') < 0, !event.body.hasOwnProperty('content') || !event.body.content]
 
         if (tests.some(test => test)) {
             console.log(JSON.stringify(tests), null, 2)
