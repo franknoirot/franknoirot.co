@@ -7,7 +7,7 @@ const REPO = 'franknoirot.co'
 const POST_FOLDER = './posts'
 
 
-module.exports = async function (event, context, callback) {
+exports.handler = async function (event, context, callback) {
     console.log('event', event)
 
     // get post's content and user's auth info
