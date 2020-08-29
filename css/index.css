@@ -662,11 +662,41 @@ footer {
     width: 100%;
   }
 
+  .tmpl-post {
+    overflow-x: hidden;
+  }
+
   .two-col {
     grid-template-columns: 1fr;
   }
 
-  .pointer {
+  .pointer,
+  .tmpl-writing .pointer {
+      opacity: 0;
+      display: block;
+      bottom: 41.5vh;
+      top: unset;
+      right: 43%;
+      left: unset;
+      background: white;
+      transform: rotate(0);
+      transform-origin: right center;
+      width: 5vh;
+  }
+
+  /* .pointer::before {
+      content: '';
+      position: fixed;
+      width: 5vw;
+      height: 1.5px;
+      transform-origin: left center;
+      top: 50%;
+      left: 0%;
+      background: white;
+      transform: translate(0, -50%) rotate(-117deg);
+  } */
+
+  .pointer::after {
     display: none;
   }
 
@@ -745,35 +775,6 @@ footer {
   .two-col {
     margin-block-start: 10vh;
   }
-
-  /* .pointer,
-  .tmpl-writing .pointer {
-      display: block;
-      bottom: 41.5vh;
-      top: unset;
-      right: 43%;
-      left: unset;
-      background: white;
-      transform: rotate(117deg);
-      transform-origin: right center;
-      width: 5vh;
-  }
-
-  .pointer::before {
-      content: '';
-      position: fixed;
-      width: 5vw;
-      height: 1.5px;
-      transform-origin: left center;
-      top: 50%;
-      left: 0%;
-      background: white;
-      transform: translate(0, -50%) rotate(-117deg);
-  }
-
-  .pointer::after {
-    display: none;
-  } */
 
   .steezy-pre::before, .steezy-pre::after,
   .steezy-img::before, .steezy-img::after {
