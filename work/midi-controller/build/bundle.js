@@ -808,57 +808,57 @@ var app = (function () {
     			p = element("p");
     			p.textContent = "Set MIDI Input";
     			attr_dev(h2, "class", "output");
-    			add_location(h2, file$1, 33, 4, 885);
+    			add_location(h2, file$1, 33, 4, 900);
     			attr_dev(input0, "class", "dial-min");
     			attr_dev(input0, "id", input0_id_value = `dial-${/*id*/ ctx[0]}-min`);
     			attr_dev(input0, "type", "number");
-    			add_location(input0, file$1, 37, 16, 1055);
+    			add_location(input0, file$1, 37, 16, 1070);
     			attr_dev(div0, "class", "line");
-    			add_location(div0, file$1, 38, 16, 1156);
+    			add_location(div0, file$1, 38, 16, 1171);
     			attr_dev(div1, "class", "dial-min-inner");
-    			add_location(div1, file$1, 36, 12, 1009);
+    			add_location(div1, file$1, 36, 12, 1024);
     			attr_dev(label0, "for", label0_for_value = `dial-${/*id*/ ctx[0]}-min`);
-    			add_location(label0, file$1, 40, 12, 1214);
+    			add_location(label0, file$1, 40, 12, 1229);
     			attr_dev(div2, "class", "dial-min-wrap");
-    			add_location(div2, file$1, 35, 8, 968);
+    			add_location(div2, file$1, 35, 8, 983);
     			attr_dev(div3, "class", "dial-line");
     			attr_dev(div3, "style", div3_style_value = `transform: var(--init-trans) rotate(${(/*normalizedOutput*/ ctx[7] - 0.5) * 180}deg`);
-    			add_location(div3, file$1, 44, 16, 1382);
+    			add_location(div3, file$1, 44, 16, 1397);
     			attr_dev(label1, "class", "dial-bg");
     			attr_dev(label1, "for", label1_for_value = `dial-${/*id*/ ctx[0]}`);
-    			add_location(label1, file$1, 43, 12, 1320);
+    			add_location(label1, file$1, 43, 12, 1335);
     			attr_dev(input1, "class", "dial");
     			attr_dev(input1, "id", input1_id_value = `dial-${/*id*/ ctx[0]}`);
     			attr_dev(input1, "type", "range");
     			attr_dev(input1, "step", "any");
     			attr_dev(input1, "min", /*min*/ ctx[3]);
     			attr_dev(input1, "max", /*max*/ ctx[4]);
-    			add_location(input1, file$1, 46, 12, 1531);
+    			add_location(input1, file$1, 46, 12, 1546);
     			attr_dev(div4, "class", "dial-wrap");
-    			add_location(div4, file$1, 42, 8, 1283);
+    			add_location(div4, file$1, 42, 8, 1298);
     			attr_dev(input2, "class", "dial-max");
     			attr_dev(input2, "id", input2_id_value = `dial-${/*id*/ ctx[0]}-max`);
     			attr_dev(input2, "type", "number");
-    			add_location(input2, file$1, 50, 16, 1756);
+    			add_location(input2, file$1, 50, 16, 1771);
     			attr_dev(div5, "class", "line");
-    			add_location(div5, file$1, 51, 16, 1857);
+    			add_location(div5, file$1, 51, 16, 1872);
     			attr_dev(div6, "class", "dial-max-inner");
-    			add_location(div6, file$1, 49, 12, 1710);
+    			add_location(div6, file$1, 49, 12, 1725);
     			attr_dev(label2, "for", label2_for_value = `dial-${/*id*/ ctx[0]}-max`);
-    			add_location(label2, file$1, 53, 12, 1915);
+    			add_location(label2, file$1, 53, 12, 1930);
     			attr_dev(div7, "class", "dial-max-wrap");
-    			add_location(div7, file$1, 48, 8, 1669);
+    			add_location(div7, file$1, 48, 8, 1684);
     			attr_dev(div8, "class", "dial-row");
-    			add_location(div8, file$1, 34, 4, 936);
+    			add_location(div8, file$1, 34, 4, 951);
     			attr_dev(button, "class", "dial-midi");
-    			add_location(button, file$1, 57, 8, 2032);
+    			add_location(button, file$1, 57, 8, 2047);
     			attr_dev(p, "class", "midi-status");
-    			add_location(p, file$1, 63, 8, 2283);
+    			add_location(p, file$1, 63, 8, 2298);
     			attr_dev(div9, "class", "midi-card-bottom");
-    			add_location(div9, file$1, 56, 4, 1992);
+    			add_location(div9, file$1, 56, 4, 2007);
     			attr_dev(div10, "class", "dial-container");
     			attr_dev(div10, "style", div10_style_value = `--theme: ${/*color*/ ctx[1]}`);
-    			add_location(div10, file$1, 32, 0, 793);
+    			add_location(div10, file$1, 32, 0, 808);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -1102,8 +1102,8 @@ var app = (function () {
     		}
 
     		if ($$self.$$.dirty & /*output*/ 32) {
-    			 {
-    				dispatch("input", output);
+    			 if (output) {
+    				dispatch("midiinput", output);
     			}
     		}
     	};
@@ -1162,9 +1162,9 @@ var app = (function () {
 
     function get_each_context(ctx, list, i) {
     	const child_ctx = ctx.slice();
-    	child_ctx[4] = list[i];
-    	child_ctx[5] = list;
-    	child_ctx[6] = i;
+    	child_ctx[3] = list[i];
+    	child_ctx[4] = list;
+    	child_ctx[5] = i;
     	return child_ctx;
     }
 
@@ -1174,19 +1174,19 @@ var app = (function () {
     	let dialmidi;
     	let current;
 
-    	function input_handler(...args) {
-    		return /*input_handler*/ ctx[3](/*control*/ ctx[4], /*each_value*/ ctx[5], /*i*/ ctx[6], ...args);
+    	function midiinput_handler(...args) {
+    		return /*midiinput_handler*/ ctx[2](/*control*/ ctx[3], /*each_value*/ ctx[4], /*i*/ ctx[5], ...args);
     	}
 
     	dialmidi = new DialMIDI({
     			props: {
-    				id: /*i*/ ctx[6],
-    				color: /*control*/ ctx[4].color
+    				id: /*i*/ ctx[5],
+    				color: /*control*/ ctx[3].color
     			},
     			$$inline: true
     		});
 
-    	dialmidi.$on("input", input_handler);
+    	dialmidi.$on("midiinput", midiinput_handler);
 
     	const block = {
     		key: key_1,
@@ -1204,8 +1204,8 @@ var app = (function () {
     		p: function update(new_ctx, dirty) {
     			ctx = new_ctx;
     			const dialmidi_changes = {};
-    			if (dirty & /*controls*/ 1) dialmidi_changes.id = /*i*/ ctx[6];
-    			if (dirty & /*controls*/ 1) dialmidi_changes.color = /*control*/ ctx[4].color;
+    			if (dirty & /*controls*/ 1) dialmidi_changes.id = /*i*/ ctx[5];
+    			if (dirty & /*controls*/ 1) dialmidi_changes.color = /*control*/ ctx[3].color;
     			dialmidi.$set(dialmidi_changes);
     		},
     		i: function intro(local) {
@@ -1255,7 +1255,7 @@ var app = (function () {
     	let dispose;
     	let each_value = /*controls*/ ctx[0];
     	validate_each_argument(each_value);
-    	const get_key = ctx => /*control*/ ctx[4].color + /*i*/ ctx[6];
+    	const get_key = ctx => /*control*/ ctx[3].color + /*i*/ ctx[5];
     	validate_each_keys(ctx, each_value, get_each_context, get_key);
 
     	for (let i = 0; i < each_value.length; i += 1) {
@@ -1281,22 +1281,22 @@ var app = (function () {
     			svg = svg_element("svg");
     			rect = svg_element("rect");
     			attr_dev(button, "class", "add-midi svelte-1gya0lc");
-    			add_location(button, file$2, 25, 2, 705);
+    			add_location(button, file$2, 25, 2, 675);
     			attr_dev(section0, "class", "grid svelte-1gya0lc");
-    			add_location(section0, file$2, 18, 1, 471);
-    			attr_dev(rect, "x", rect_x_value = /*getCtrl*/ ctx[2](0, 5));
-    			attr_dev(rect, "y", rect_y_value = /*getCtrl*/ ctx[2](1, 2.5));
-    			attr_dev(rect, "width", rect_width_value = /*getCtrl*/ ctx[2](2, 10));
-    			attr_dev(rect, "height", rect_height_value = /*getCtrl*/ ctx[2](3, 5));
-    			attr_dev(rect, "fill", rect_fill_value = `hsl(${/*getCtrl*/ ctx[2](4, 80)}deg, ${/*getCtrl*/ ctx[2](5, 60)}%, ${/*getCtrl*/ ctx[2](6, 60)}%)`);
-    			add_location(rect, file$2, 29, 3, 883);
+    			add_location(section0, file$2, 18, 1, 437);
+    			attr_dev(rect, "x", rect_x_value = getCtrl(/*controls*/ ctx[0][0], 5));
+    			attr_dev(rect, "y", rect_y_value = getCtrl(/*controls*/ ctx[0][1], 2.5));
+    			attr_dev(rect, "width", rect_width_value = getCtrl(/*controls*/ ctx[0][2], 10));
+    			attr_dev(rect, "height", rect_height_value = getCtrl(/*controls*/ ctx[0][3], 5));
+    			attr_dev(rect, "fill", rect_fill_value = `hsl(${getCtrl(/*controls*/ ctx[0][4], 80)}deg, ${getCtrl(/*controls*/ ctx[0][5], 60)}%, ${getCtrl(/*controls*/ ctx[0][6], 60)}%)`);
+    			add_location(rect, file$2, 29, 3, 853);
     			attr_dev(svg, "viewBox", "0 0 20 10");
     			set_style(svg, "max-width", "720px");
     			set_style(svg, "border", "solid 4px");
-    			add_location(svg, file$2, 28, 2, 808);
-    			add_location(section1, file$2, 27, 1, 795);
+    			add_location(svg, file$2, 28, 2, 778);
+    			add_location(section1, file$2, 27, 1, 765);
     			attr_dev(main, "class", "svelte-1gya0lc");
-    			add_location(main, file$2, 17, 0, 462);
+    			add_location(main, file$2, 17, 0, 428);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -1330,6 +1330,26 @@ var app = (function () {
     				validate_each_keys(ctx, each_value, get_each_context, get_key);
     				each_blocks = update_keyed_each(each_blocks, dirty, get_key, 1, ctx, each_value, each_1_lookup, section0, outro_and_destroy_block, create_each_block, t0, get_each_context);
     				check_outros();
+    			}
+
+    			if (!current || dirty & /*controls*/ 1 && rect_x_value !== (rect_x_value = getCtrl(/*controls*/ ctx[0][0], 5))) {
+    				attr_dev(rect, "x", rect_x_value);
+    			}
+
+    			if (!current || dirty & /*controls*/ 1 && rect_y_value !== (rect_y_value = getCtrl(/*controls*/ ctx[0][1], 2.5))) {
+    				attr_dev(rect, "y", rect_y_value);
+    			}
+
+    			if (!current || dirty & /*controls*/ 1 && rect_width_value !== (rect_width_value = getCtrl(/*controls*/ ctx[0][2], 10))) {
+    				attr_dev(rect, "width", rect_width_value);
+    			}
+
+    			if (!current || dirty & /*controls*/ 1 && rect_height_value !== (rect_height_value = getCtrl(/*controls*/ ctx[0][3], 5))) {
+    				attr_dev(rect, "height", rect_height_value);
+    			}
+
+    			if (!current || dirty & /*controls*/ 1 && rect_fill_value !== (rect_fill_value = `hsl(${getCtrl(/*controls*/ ctx[0][4], 80)}deg, ${getCtrl(/*controls*/ ctx[0][5], 60)}%, ${getCtrl(/*controls*/ ctx[0][6], 60)}%)`)) {
+    				attr_dev(rect, "fill", rect_fill_value);
     			}
     		},
     		i: function intro(local) {
@@ -1371,6 +1391,12 @@ var app = (function () {
     	return block;
     }
 
+    function getCtrl(ctrl, fallbackVal) {
+    	return ctrl && ctrl.value !== undefined
+    	? ctrl.value
+    	: fallbackVal;
+    }
+
     function instance$2($$self, $$props, $$invalidate) {
     	let controls = [];
 
@@ -1379,12 +1405,6 @@ var app = (function () {
     		const sat = Math.random() * 20 + 50 + "%";
     		const lit = "65%";
     		$$invalidate(0, controls = [...controls, { color: `hsl(${hue}, ${sat}, ${lit})` }]);
-    	}
-
-    	function getCtrl(index, fallbackVal) {
-    		return controls[index] && controls[index].value !== undefined
-    		? controls[index].value
-    		: fallbackVal;
     	}
 
     	const writable_props = [];
@@ -1396,7 +1416,7 @@ var app = (function () {
     	let { $$slots = {}, $$scope } = $$props;
     	validate_slots("App", $$slots, []);
 
-    	const input_handler = (control, each_value, i, { detail }) => {
+    	const midiinput_handler = (control, each_value, i, { detail }) => {
     		$$invalidate(0, each_value[i].value = detail, controls);
     		$$invalidate(0, controls = [...controls]);
     	};
@@ -1411,7 +1431,7 @@ var app = (function () {
     		$$self.$inject_state($$props.$$inject);
     	}
 
-    	return [controls, addControl, getCtrl, input_handler];
+    	return [controls, addControl, midiinput_handler];
     }
 
     class App extends SvelteComponentDev {
