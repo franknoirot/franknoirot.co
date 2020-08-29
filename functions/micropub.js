@@ -25,28 +25,26 @@ exports.handler = async function (event, context, callback) {
     }
 
     try {
+        console.log('event.body = ', event.body)
+
         // get post's content and user's auth info
         const contentType = event.headers['content-type']
-        const boundary = contentType.match(/boundary=(.*)$/)[1]
 
-        const parts = Object.fromEntries(event.body.split(boundary).map(partStr => {
-            const key = partStr.match(/name="(.*)"/)
-            const value = partStr.match(/name=".*"\r\n\r\n((.|\n)*)/)
-            if (key && value) {
-                return [key[1],value[1]]
-            } else {
-                return false
-            }
-        }).filter(x => x && x !== null))
-
-        // // verify user's auth token via IndieAuth
-        // const authRes = await fetch('https://tokens.indieauth.com/token', {
-        //     method: 'GET',
-        //     headers: {
-        //         'Accept': 'application/json',
-        //         'Authorization': event.headers.Authorization,
-        //     },
-        // }).catch(err => console.error(err))
+        const boundary = contentType.match(/boundary=(.*)$/)
+        let parts
+        if (boundary) {
+            parts = Object.fromEntries(event.body.split(boundary).map(partStr => {
+                const key = partStr.match(/name="(.*)"/)
+                const value = partStr.match(/name=".*"\r\n\r\n((.|\n)*)/)
+                if (key && value) {
+                    return [key[1],value[1]]
+                } else {
+                    return false
+                }
+            }).filter(x => x && x !== null))
+        } else {
+            parts = Object.fromEntries(decodeURIComponent(event.body).split('&').map(keyValPair => [...keyValPair.split('=')]))
+        }
 
         // uhh Netlify Identity just comes for free with the request????
         const { user } = context.clientContext
