@@ -28,13 +28,15 @@ exports.handler = async function (event, context, callback) {
         console.log('event.body = ', event.body)
 
 
-        const user = await fetch('https://tokens.indieauth.com/#verify', {
+        const authRes = await fetch('https://tokens.indieauth.com/#verify', {
             method: 'GET',
             headers: {
                 'Accept': 'application/json',
                 'Authorization': event.headers.authorization,
             },
-        }).then(res => await res.json()).catch(err => console.error(err))
+        }).catch(err => console.error(err))
+
+        const user = await authRes.json().catch(err => console.error(err))
 
         console.log('res = ', user)
 
