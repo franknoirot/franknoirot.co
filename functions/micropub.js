@@ -85,7 +85,7 @@ exports.handler = async function (event, context, callback) {
         console.log(parts.content)
 
         // push commit to GitHub repo
-        await uploadToRepo(octo, filePath, parts.content, OWNER, REPO)
+        await uploadToRepo(octo, title, filePath, parts.content, OWNER, REPO)
 
         callback(null, {
             statusCode: 201,
@@ -113,7 +113,7 @@ async function uploadToRepo(octo, path, content, owner, repo, branch = `master`)
         currCommit.treeSha
     )
     console.log('newTree = ', newTree)
-    const commitMessage = `New post published via MicroPub!`
+    const commitMessage = `New post published via MicroPub: ${ title }`
     const newCommit = await createNewCommit(
         octo,
         owner,
