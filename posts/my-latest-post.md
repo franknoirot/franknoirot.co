@@ -4,8 +4,8 @@
     layout: layouts/post.njk
     date: 2020-7-29
     tags:
-    - post
-    - code
+      - post
+      - code
     ---
 
     # This is a test\r\n\r\nTesting out actual metadata creation
