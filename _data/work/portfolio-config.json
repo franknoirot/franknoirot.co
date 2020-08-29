@@ -4,7 +4,7 @@
   "lastUpdatedMMDD": "08/28",
   "isLocal": true,
   "isPublic": true,
-  "path": "/work/midi-controller",
+  "path": "/midi-controller",
   "themeColor": "hsl(310deg, 60%, 65%)",
   "tools": "Svelte.js, WebMIDI API",
   "image": false
