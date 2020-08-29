@@ -1,6 +1,6 @@
-import Octokit from '@octokit/rest'
-import fetch from 'isomorphic-fetch'
-import qs from 'querystring'
+const Octokit = require('@octokit/rest')
+const fetch = require('isomorphic-fetch')
+const qs = require('querystring')
 
 const OWNER = 'franknoirot'
 const REPO = 'franknoirot.co'
