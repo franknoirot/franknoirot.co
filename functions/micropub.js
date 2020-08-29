@@ -30,10 +30,12 @@ exports.handler = async function (event, context, callback) {
         // uhh Netlify Identity just comes for free with the request????
         const { user } = context.clientContext
 
-        // if invalid user, return failure state
-        const tests = [!user, !user.hasOwnProperty('me'), !user.me, event.body.type.indexOf('h-entry') < 0, !event.hasOwnProperty('content'), !parts.content]
+        console.log('user = ', user)
 
-        if (tests.some(test => !test || test === null)) {
+        // if invalid user, return failure state
+        const tests = [!user, !user.hasOwnProperty('me'), !user.me, event.body.type.indexOf('h-entry') < 0, !event.body.hasOwnProperty('content'), !event.body.content]
+
+        if (tests.some(test => test)) {
             console.log(JSON.stringify(tests), null, 2)
             callback(new Error("malformed authentication"), {
                 statusCode: 403,
