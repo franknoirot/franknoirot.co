@@ -666,6 +666,26 @@ footer {
     grid-template-columns: 1fr;
   }
 
+  .pointer {
+    display: none;
+  }
+
+  .screenshot-container,
+  .tmpl-writing .screenshot-container {
+      bottom: 0;
+      right: 0;
+      top: unset;
+      left: unset;
+      width: 75%;
+      clip-path: polygon(50% 0, 100% 0, 100% 100%, 0 100%);
+  }
+
+  .screenshot-container img {
+    touch-action: none;
+    user-select: none;
+    pointer-events: none;
+  }
+
 
   /* .steezy-img */
   .steezy-img {
@@ -726,16 +746,17 @@ footer {
     margin-block-start: 10vh;
   }
 
-  .pointer,
+  /* .pointer,
   .tmpl-writing .pointer {
-      bottom: 40.5vh;
+      display: block;
+      bottom: 41.5vh;
       top: unset;
       right: 43%;
       left: unset;
       background: white;
       transform: rotate(117deg);
       transform-origin: right center;
-      width: 10vw;
+      width: 5vh;
   }
 
   .pointer::before {
@@ -752,23 +773,7 @@ footer {
 
   .pointer::after {
     display: none;
-  }
-
-  .screenshot-container,
-  .tmpl-writing .screenshot-container {
-      bottom: 0;
-      right: 0;
-      top: unset;
-      left: unset;
-      width: 75%;
-      clip-path: polygon(50% 0, 100% 0, 100% 100%, 0 100%);
-  }
-
-  .screenshot-container img {
-    touch-action: none;
-    user-select: none;
-    pointer-events: none;
-  }
+  } */
 
   .steezy-pre::before, .steezy-pre::after,
   .steezy-img::before, .steezy-img::after {
