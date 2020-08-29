@@ -10,8 +10,8 @@ const now = new Date()
 const padZ = (int, zeros) => int.toString().padStart(zeros, '0')
 const date = `${now.getFullYear()}-${padZ(now.getMonth(), 2)}-${padZ(now.getDate(), 2)}`
 
-function postMeta(title, slug) {
-    return `---\ntitle: "${ title }"\nslug: "${ slug }"\nlayout: "layouts/post.njk"\ndate: ${ now.toISOString() }\ntags:\n  - post\n  - code\n---\n\n`
+function postMeta(title, slug, categories) {
+    return `---\ntitle: "${ title }"\nslug: "${ slug }"\nlayout: "layouts/post.njk"\ndate: ${ now.toISOString() }\ntags:\n  - post\n${  categories.map(c => '  - '+c) }\n---\n\n`
 }
 
 exports.handler = async function (event, context, callback) {
@@ -27,30 +27,11 @@ exports.handler = async function (event, context, callback) {
     try {
         console.log('event.body = ', event.body)
 
-        // get post's content and user's auth info
-        const contentType = event.headers['content-type']
-
-        const boundary = contentType.match(/boundary=(.*)$/)
-        let parts
-        if (boundary) {
-            parts = Object.fromEntries(event.body.split(boundary).map(partStr => {
-                const key = partStr.match(/name="(.*)"/)
-                const value = partStr.match(/name=".*"\r\n\r\n((.|\n)*)/)
-                if (key && value) {
-                    return [key[1],value[1]]
-                } else {
-                    return false
-                }
-            }).filter(x => x && x !== null))
-        } else {
-            parts = Object.fromEntries(decodeURIComponent(event.body).split('&').map(keyValPair => [...keyValPair.split('=')]))
-        }
-
         // uhh Netlify Identity just comes for free with the request????
         const { user } = context.clientContext
 
         // if invalid user, return failure state
-        if (!user || !user.hasOwnProperty('me') || !user.me || !parts.hasOwnProperty('content') || !parts.content) {
+        if (!user || !user.hasOwnProperty('me') || !user.me || event.body.type.indexOf('h-entry') < 0 || !event.hasOwnProperty('content') || !parts.content) {
             callback(new Error("malformed authentication"), {
                 statusCode: 403,
                 body: "Forbidden: malformed authentication",
@@ -64,19 +45,19 @@ exports.handler = async function (event, context, callback) {
             auth: process.env.GITHUB_TOKEN,
         })
 
-        let title = parts.title
+        let title = event.body.name[0]
         if (!title) {
-            title = parts.content.match(/# (.*)\n\n/)
+            title = event.body.content[0].html.match(/# (.*)\n\n/)
         }
         
         if (title) {
             title = title[1]
-            parts.content = parts.content.replace(/# (.*)\n\n/, '')
+            event.body.content[0].html = event.body.content[0].html.replace(/# (.*)\n\n/, '')
         } else {
             title = `Post ${date}`
         }
 
-        parts.content = postMeta(title, parts.slug) + parts.content
+        parts.content = postMeta(title, event.body["mp-slug"], event.body.category) + event.body.content[0].html
 
         const filePath = POST_FOLDER + '/' + ((parts.slug) ? parts.slug + '.md' : `${date}--${now.getHours}-${now.getMinutes}-${now.getSeconds}.md`)
 
