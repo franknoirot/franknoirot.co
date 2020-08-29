@@ -31,7 +31,10 @@ exports.handler = async function (event, context, callback) {
         const { user } = context.clientContext
 
         // if invalid user, return failure state
-        if (!user || !user.hasOwnProperty('me') || !user.me || event.body.type.indexOf('h-entry') < 0 || !event.hasOwnProperty('content') || !parts.content) {
+        const tests = [!user, !user.hasOwnProperty('me'), !user.me, event.body.type.indexOf('h-entry') < 0, !event.hasOwnProperty('content'), !parts.content]
+
+        if (tests.some(test => !test || test === null)) {
+            console.log(JSON.stringify(tests), null, 2)
             callback(new Error("malformed authentication"), {
                 statusCode: 403,
                 body: "Forbidden: malformed authentication",
@@ -47,24 +50,24 @@ exports.handler = async function (event, context, callback) {
 
         let title = event.body.name[0]
         if (!title) {
-            title = event.body.content[0].html.match(/# (.*)\n\n/)
+            title = event.body.content[0].html.match(/<h1>(.*)<\/h1>/)
         }
         
         if (title) {
             title = title[1]
-            event.body.content[0].html = event.body.content[0].html.replace(/# (.*)\n\n/, '')
+            event.body.content[0].html = event.body.content[0].html.replace(/<h1>(.*)<\/h1>/, '')
         } else {
             title = `Post ${date}`
         }
 
         parts.content = postMeta(title, event.body["mp-slug"], event.body.category) + event.body.content[0].html
 
-        const filePath = POST_FOLDER + '/' + ((parts.slug) ? parts.slug + '.md' : `${date}--${now.getHours}-${now.getMinutes}-${now.getSeconds}.md`)
+        const filePath = POST_FOLDER + '/' + ((event.body["mp-slug"]) ? event.body["mp-slug"] + '.md' : `${date}--${now.getHours}-${now.getMinutes}-${now.getSeconds}.md`)
 
-        console.log(parts.content)
+        console.log(event.body.content[0].html)
 
         // push commit to GitHub repo
-        await uploadToRepo(octo, title, filePath, parts.content, OWNER, REPO)
+        await uploadToRepo(octo, title, filePath, event.body.content[0].html, OWNER, REPO)
 
         callback(null, {
             statusCode: 201,
