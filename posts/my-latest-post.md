@@ -2,7 +2,7 @@
 title: "This is a test"
 slug: "my-latest-post"
 layout: "layouts/post.njk"
-date: "2020-7-29T11:34:3.105z"
+date: 2020-08-29T11:45:11.330Z
 tags:
   - post
   - code
