@@ -21,7 +21,7 @@ I will be spending time learning [Make](https://www.gnu.org/software/make/manual
 
 ## The Solution
 
-Enter [GitHub Actions](https://github.com/features/actions) and Netlify. Instead of copying and pasting one of my side project's site *manually,* let's push code to our side project repo and have [Octocat](https://octodex.github.com/) go off and run those errands for us! And we'll do it one better: let's add a custom \*specially-named\* config file to our side project's root folder, where we can define anything we want about how that side project shows up and gets linked on the portfolio site!
+Enter [GitHub Actions](https://github.com/features/actions) and Netlify. Instead of copying and pasting one of my side project sites *manually,* let's push code to our side project repo and have [Octocat](https://octodex.github.com/) go off and run those errands for us! And we'll do it one better: let's add a custom \*specially-named\* config file to our side project's root folder, where we can define anything we want about how that side project shows up and gets linked to on the portfolio site!
 
 ### Portfolio Configuration
 
@@ -48,7 +48,7 @@ Our GitHub Action is only going to automate two tasks:
 1. Copying the contents of our side project's `/_site` directory into the portfolio site's `/work/[project-name]` directory
 2. Copying our side project's `portfolio-config.json` file  into the `/_data/work` directory
 
-   **Note:** This second step is specific to an 11ty project. The goal is to get your theming data to be accessible to your site/page, but the location will be  different depending on your SSG of choice. More details in the last section.
+   **Note:** This second step is specific to an 11ty project. The goal is to get your theming data to be accessible to your site/page, but the location will be different depending on your SSG of choice. More details in the last section.
 
 GitHub already has a well-stocked [Marketplace](https://github.com/marketplace?type=actions) of different Actions available to use and remix, and I found a solid option for achieving this process (copy-and-paste across repositories) in the [CopyCat GitHub Action](https://github.com/marketplace/actions/copycat-action) by André Storhaug.
 
@@ -127,7 +127,7 @@ In both Jobs we do three things:
 2. Checkout the side project's repo to our workspace using the standard Checkout Action
 3. Copy what we want to into the portfolio's repo using the CopyCat Action
 
-In the first job, I've used an "*" to select all the contents of the public folder for my source path (`src_path`) and added a trailing slash to the end of a new folder that will live in the `work/` directory of my portfolio site. This is so I can rename the `public/` folder to the `map-animator/` folder, allowing the URL of my side project to be `/work/map-animator`  within my portfolio site.
+In the first job, I've used an "*" to select all the contents of the public folder for my source path (`src_path`) and added a trailing slash to the end of a new folder that will live in the `work/` directory of my portfolio site. This is so I can rename the `public/` folder to the `map-animator/` folder, allowing the URL of my side project to be `/work/map-animator` within my portfolio site.
 
 In the second Job, I've added a `needs: directory` statement. The second limitation I ran into with CopyCat is the Action doesn't seem set up to be able to be run in parallel, which is the default if you define multiple Jobs within your Workflow. I am eager to fix this, because it nearly halves the time it takes to run the Workflow when run in parallel. In the meantime, this needs statement makes the second Job not fire until the first one finishes, eliminating the merge conflict error I was getting.
 
@@ -193,7 +193,7 @@ So in my [`work.njk`](https://github.com/franknoirot/franknoirot.co/tree/master/
 
 </div>
 
-Here we see Nunjucks + 11ty two-fold magic. First, 11ty takes any separate JSON files within a subdirectory of `_data` and adds each as an entry within a `data` object with the work directory's name. So if your file's path is `_data/work/mapAnimator.json`, then `work.mapAnimator` is accessible on that object. Second, within Nunjucks you can iterate over the keys of an object just like an array, which felt odd and magical to me coming from Javascript.
+Here we see Nunjucks + 11ty two-fold magic. First, 11ty takes any separate JSON files within a subdirectory of `_data` and adds each as an entry within a `data` object with the work directory's name. So if your file's path is `_data/work/mapAnimator.json`, then `work.mapAnimator` is accessible on that object. Second, within Nunjucks you can iterate over the keys of an object just like an array, in an implied sort of `Object.keys().forEach()`.
 
 We iterate over each item in the `work/` directory and refer to it as `workItem`. If the `isPublic` attribute is set to `true`, we create a list item and link for the side project. If the `isLocal` property is `true`, we allow the path attribute to be the destination of the link and open the link in a new tab, otherwise we tuck it under the /work/ subdirectory. This allows us to hide private or in-progress projects and include portfolio configs for client work where we don't own the codebase or don't want to put personal code inside.
 

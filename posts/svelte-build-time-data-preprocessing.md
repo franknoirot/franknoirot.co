@@ -9,13 +9,13 @@ tags:
   - code
 featuredImg: /img/svelte-build-vars.jpg
 ---
-I really enjoy coding in Svelte. I've built a few small tools and toys with it, and I'm getting opportunity to use it in production for the first time right now. But one thing that I've been missing from other toolsets is the ability to run code at build time to calculate or fetch data and pepper it into my Svelte app. [11ty](http://11ty.dev) calls this the Data Layer and [Gatsby](http://gatsbyjs.org) calls it the GraphQL layer.
+I really enjoy coding in Svelte. I've built a few small tools and toys with it, and I'm getting the opportunity to use it in production for the first time right now. But one thing that I've been missing from other toolsets is the ability to run code at build time to calculate or fetch data and pepper it into my Svelte app. [11ty](http://11ty.dev) calls this the [Data Cascade](https://www.11ty.dev/docs/data-cascade/) and [Gatsby](http://gatsbyjs.org) calls it the GraphQL layer.
 
 ## Defining "build-time data"
 
-There actually is a pretty straightforward way to seed data into your app by defining key value pairs on the optional `props` object when initializing the `App` component. The problem is, this code runs on the frontend every time the app is loaded. Fetching some REST API every page load makes the whole speed boost of Svelte irrelevant real quick.
+There actually is a pretty straightforward way to seed data into your app by defining key-value pairs on the optional `props` object when initializing the `App` component. The problem is, this code runs on the frontend every time the app is loaded. Fetching some REST API every page load makes the whole speed boost of Svelte irrelevant real quick.
 
-There are plenty of ways around this problem since we have Rollup bundling our code, but there is a way to use just what Svelte makes available so things fit nice and neat. If you're acquainted with Svelte you'll know you can have more than one script tag within you Svelte components: there is a special `<script context='module'>` that only runs once per component, not once per instance of a component. I wanted something like that, a special script tag that I could put the variables and Javascript I wanted into, or better yet put a *filename* to a Javascript file where I can put all the data fetching logic, something like this:
+There are plenty of ways around this problem since we have Rollup bundling our code, but there is a way to use just what Svelte makes available so things fit nice and neat. If you're acquainted with Svelte you'll know you can have more than one script tag within your Svelte components: there is a special `<script context='module'>` that only runs once per component, not once per instance of a component. I wanted something like that, a special script tag that I could put the variables and Javascript I wanted into, or better yet put a *filename* to a Javascript file where I can put all the data fetching logic, something like this:
 
 ```html
 <!-- App.svelte -->
@@ -105,7 +105,7 @@ Let's right the data "fetching" logic first, and save it in `buildTime.js`
 module.exports = new Date().toLocaleTimeString() +' '+ new Date().toLocaleDateString()
 ```
 
-All this does is export the current date and time in a nice-looking string, but you can call a headless CMS's API, crunch some numbers, anything in here. Now we can add a build-vars script tag to `App.svelte`, or any component for that matter.
+All this does is export the current date and time in a nice-looking string, but you can call a headless CMS's API, crunch some numbers, anything in here. Now we can add a `build-vars` script tag to `App.svelte`, or any component for that matter.
 
 ```html
 <!-- App.svelte -->
@@ -116,4 +116,4 @@ All this does is export the current date and time in a nice-looking string, but 
 <h1>this site was built at { buildTime }</h1>
 ```
 
-I was able to use this technique to build an app using [Strapi](http://strapi.io) as my CMS, pulling in all the settings and data into a single object that gets passed into the Svelte app. I hope you find use for this strategy in your projects! Reach out to me on [Instagram](http://instagram.com/franknoirot) if you find anything unsafe or incorrect with this article.
+I was able to use this technique to build an app for a client using [Strapi](http://strapi.io) as my CMS, pulling in all the settings and data into a single object that gets passed into the Svelte app. I hope you find use for this strategy in your projects! Reach out to me on [Instagram](http://instagram.com/franknoirot) if you find anything unsafe or incorrect with this article.

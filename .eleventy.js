@@ -11,7 +11,6 @@ module.exports = function(eleventyConfig) {
     const workArr = Object.keys(workDirObj)
       .map(key => workDirObj[key])
       .sort((a, b) => (a.lastUpdated > b.lastUpdated) ? -1 : 1)
-    console.log('WORK = ', workArr)
     return workArr
   });
 

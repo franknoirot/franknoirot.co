@@ -680,8 +680,129 @@ footer {
   }
 }
 
-@media(max-width: 500px) {
+@media(max-width: 475px) {
+  header {
+    padding: 0;
+  }
+  .home {
+    margin: 0;
+    padding: .75rem 1rem .5rem;
+    width: 100%;
+    font-weight: bolder;
+    
+  }
+
+  .bg-wave {
+    display: none;
+  }
+
+  .tmpl-home {
+    margin-inline: 0;
+    padding-inline: 0;
+  }
+
+  .tmpl-home .two-col {
+    background: radial-gradient(circle at top center, hsla(var(--theme-hue-1), 60%, 65%, .4), rgba(255,255,255,0.1)),
+                radial-gradient(circle at bottom center, hsla(var(--theme-hue-2), 60%, 65%, .5), rgba(255,255,255,0.5));
+    padding:  2em .5rem;
+    gap: 5vh;    
+  }
+
+  .tmpl-home .big-statement {
+    margin-inline: .5rem;
+  }
+
+  .nav {
+    margin: 0;
+    margin-block-start: .5em;
+    padding: 0 1rem .5em;
+  }
+
   .big-statement {
     font-size: 1.2rem;
+  }
+
+  .two-col {
+    margin-block-start: 10vh;
+  }
+
+  .pointer,
+  .tmpl-writing .pointer {
+      bottom: 40.5vh;
+      top: unset;
+      right: 43%;
+      left: unset;
+      background: white;
+      transform: rotate(117deg);
+      transform-origin: right center;
+      width: 10vw;
+  }
+
+  .pointer::before {
+      content: '';
+      position: fixed;
+      width: 5vw;
+      height: 1.5px;
+      transform-origin: left center;
+      top: 50%;
+      left: 0%;
+      background: white;
+      transform: translate(0, -50%) rotate(-117deg);
+  }
+
+  .pointer::after {
+    display: none;
+  }
+
+  .screenshot-container,
+  .tmpl-writing .screenshot-container {
+      bottom: 0;
+      right: 0;
+      top: unset;
+      left: unset;
+      width: 75%;
+      clip-path: polygon(50% 0, 100% 0, 100% 100%, 0 100%);
+  }
+
+  .steezy-pre::before, .steezy-pre::after,
+  .steezy-img::before, .steezy-img::after {
+    display: none;
+  }
+
+  .tmpl-work, .tmpl-writing {
+    padding-inline: 1rem;
+    width: 100vw;
+    margin-block-end: 30vh;
+    overflow-x: hidden;
+  }
+
+  .steezy-pre::before {
+    display: block;
+    position: relative;
+    content: '👇🏻 key bit of code';
+    background: none;
+    width: auto;
+    height: auto;
+    transform: none;
+    color: var(--theme-color-1);
+    animation: none;
+    border-block-start: none;
+    padding-block-end: .2rem;
+  }
+
+  .work-date {
+    margin-inline-start: 1.25rem;
+  }
+
+  footer {
+    font-size: .8rem;
+    padding: 1rem;
+    position: relative;
+    z-index: 99;
+    background: white;
+  }
+
+  .tmpl-home ~ footer {
+    margin-block-start: 0;
   }
 }
