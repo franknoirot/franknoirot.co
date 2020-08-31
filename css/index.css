@@ -51,6 +51,14 @@ p,
   line-height: 1.45;
 }
 
+.tmpl-post p {
+  font-size: 1.08rem;
+  line-height: 1.7;
+  margin-block: 1.6em;
+  margin-top: 1.6em;
+  margin-bottom: 1.6em;
+}
+
 a[href] {
   color: inherit;
 }
@@ -565,6 +573,7 @@ p code {
   margin: 1em auto;
   box-shadow: 0 .2em .6em rgba(0,0,0,.15),
               0 .5em .9em rgba(0,0,0,0.07);
+  max-width: 100%;
 }
 
 .steezy,
@@ -703,17 +712,26 @@ footer {
   .screenshot-container,
   .tmpl-writing .screenshot-container {
       bottom: 0;
-      right: 0;
+      right: -17%;
       top: unset;
       left: unset;
       width: 75%;
-      clip-path: polygon(50% 0, 100% 0, 100% 100%, 0 100%);
+      transform: skew(-20deg);
+      box-shadow: -.1rem -.15rem .3rem hsla(var(--theme-hue-1), 65%, 20%, 0.2),
+                  -.3rem -.3rem .8rem hsla(var(--theme-hue-1), 60%, 25%,0.07);
+      border-width: 3px;
+  }
+
+  .tmpl-work .screenshot-container {
+    box-shadow: -.1rem -.15rem .3rem hsla(var(--theme-hue-2), 65%, 20%, 0.2),
+                  -.3rem -.3rem .8rem hsla(var(--theme-hue-2), 60%, 25%,0.07);
   }
 
   .screenshot-container img {
     touch-action: none;
     user-select: none;
     pointer-events: none;
+    transform: skew(20deg);
   }
 
 
