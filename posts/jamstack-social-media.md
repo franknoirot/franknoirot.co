@@ -9,11 +9,11 @@ tags:
 featuredImg: /img/2020_08_30-rok-featured.jpg
 ---
 
-At the start of the year I was asked to build a site for a local non-profit called Ring of Keys with a really cool mission: they're dedicated to providing a directory of queer female, NB, and trans theatremakers as well as resources to theatre organizations that want to make an effort to address the wide disparity in hiring practices seen in the field today. One of the most common refrains from casting directors is that they have trouble finding queer and gender-nonconforming talent, so simply having a central place for artists to be visible could have a big impact.
+At the start of the year I was asked to build a site for a local non-profit called [Ring of Keys](https://ringofkeys.org) with a really cool mission: they're dedicated to providing a directory of queer female, NB, and trans theatremakers as well as resources to theatre organizations that want to make an effort to address the wide disparity in hiring practices seen in the field today. One of the most common refrains from casting directors is that they have trouble finding queer and gender-nonconforming talent, so simply having a central place for artists to be visible could have a big impact.
 
 ![Screenshot of the directory page of RingOfKeys.com. Hey casting directors, they're right here.](/img/2020_08_30-rok-directory.jpg)
 
-As a new developer I was excited to try out a full build of a website and CMS on my own with real stakes, and I started piecing together to technologies as the client and I outlined the features over text. Mostly landing pages, a searchable directory of artist profiles, the ability to upload news items and events: good, good, I reached for Gatsby and DatoCMS because of the CMS's price point (at the time) and Gatsby's momentum. And we'll host it on Netlify because of course we will.
+As a new developer I was excited to try out a full build of a website and CMS on my own with real stakes, and I started piecing together to technologies as the client and I outlined the features over text. Mostly landing pages, a searchable directory of artist profiles, the ability to upload news items and events: good, good, I reached for [Gatsby](https://gatsbyjs.org) and [DatoCMS](https://datocms.com) because of the CMS's price point (at the time) and Gatsby's momentum. And we'll host it on [Netlify](https://netlify.com) because of course we will.
 
 And the ability for artists to edit their own profile pages.
 
@@ -25,7 +25,7 @@ The solution I reached ended up was deeply satisfying to make, and I think it co
 
 ## Just Add Auth
 
-Auth0 and Netlify functions were my secret weapons. Artists were already going to be entries within DatoCMS, and since Dato is a headless CMS artists' information can be created and edited via API. So all we had to do to make profiles editable was create Auth0 accounts for every artist in parallel with their profile in Dato, then associate it with their Dato entry.
+[Auth0](https://auth0.com) and [Netlify functions](https://docs.netlify.com/functions/build-with-javascript/) were my secret weapons. Artists were already going to be entries within DatoCMS, and since Dato is a headless CMS artists' information can be created and [edited via API](https://www.datocms.com/docs/content-management-api). So all we had to do to make profiles editable was create Auth0 accounts for every artist in parallel with their profile in Dato, then associate it with their Dato entry.
 
 ![Architecture diagram of the site showing how the whole site is editable by site editors authorized by DatoCMS, and the profile pages are editable by artists authorized by the third-party service Auth0.](/img/2020_08_30-rok-editability.png)
 
@@ -43,7 +43,7 @@ The power of this model is that we've essentially created a new low-access tier 
 
 There is a cool added benefit of piggybacking off of an existing CMS to accomplish this kind of pseudo social media platform. The site editors and moderators still have full control of the artists' pages as relatively easy-to-edit CMS entries. This means that if an artist is having trouble with the site or with some element of their profile, editors have a fallback of going into the CMS to make changes without me having to build some entire editor interface from the ground up, which I find so commonly in platforms with user profiles. Need to block a profile for some reported abuse? Delete the CMS and Auth0 entry, or just unpublish until the issue is resolved. Profiles are on the same level as Landing Pages and Events, and use the same interface to edit them, all without me doing any extra development.
 
-As a side note, my day job has taken up a lot of the time and energy I have to work on this project so if you're a developer or dev-curious person, especially a BIPOC, female, or gender-non-conforming person, looking to learn development and volunteer with an organization please hit me up! I'm happy to teach someone the ropes and be there to collaborate on coding.
+As a side note, my day job has taken up a lot of the time and energy I have to work on this project so if you're a developer or dev-curious person, especially a BIPOC, female, and/or gender-nonconforming person, looking to learn development and volunteer with an organization please hit me up! I'm happy to teach someone the ropes and be there to collaborate on coding.
 
 ## Open Issues
 
@@ -59,4 +59,4 @@ A third is the speed of profile saves. We're making up to three fetch calls when
 
 There were a ton of little challenges along the way to launching this site that I'd like to write about eventually, but this is the main concept I learned that I'd like to share: you can create sites with editable profiles on the JAMstack by leveraging the API power of headless CMSes in coordination with an authentication service and serverless functions.
 
-If you have any questions, concerns, or corrections to this article please feel free to reach out to me on Instagram or Twitter. Thanks for reading!
+If you have any questions, concerns, or corrections to this article please feel free to reach out to me on [Instagram](https://instagram.com/franknoirot) or [Twitter](https://twitter.com/frank_noirot). Thanks for reading!

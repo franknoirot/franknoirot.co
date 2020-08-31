@@ -52,8 +52,10 @@ p,
 }
 
 .tmpl-post p {
-  font-size: 1.08rem;
-  line-height: 1.7;
+  font-family: inherit;
+  font-family: 'Bitter';
+  font-size: 1.2rem;
+  line-height: 1.75;
   margin-block: 1.6em;
   margin-top: 1.6em;
   margin-bottom: 1.6em;
@@ -804,6 +806,10 @@ footer {
     width: 100vw;
     margin-block-end: 30vh;
     overflow-x: hidden;
+  }
+
+  .tmpl-post p {
+    font-size: 1.1rem;
   }
 
   .steezy-pre::before {
