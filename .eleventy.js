@@ -5,6 +5,8 @@ const pluginSyntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
 const pluginNavigation = require("@11ty/eleventy-navigation");
 const markdownIt = require("markdown-it");
 const markdownItAnchor = require("markdown-it-anchor");
+const mdIterator = require("markdown-it-for-inline");
+
 
 module.exports = function(eleventyConfig) {
   eleventyConfig.addFilter("sortWorkByDate", function(workDirObj) {
@@ -57,11 +59,18 @@ module.exports = function(eleventyConfig) {
     html: true,
     breaks: true,
     linkify: true
+  }).use(mdIterator, 'url_new_win', 'link_open', function (tokens, idx) {
+    const [attrName, href] = tokens[idx].attrs.find(attr => attr[0] === 'href')
+    
+    if (href && (!href.includes('franknoirot.co') && !href.startsWith('/') && !href.startsWith('#'))) {
+      tokens[idx].attrPush([ 'target', '_blank' ])
+      tokens[idx].attrPush([ 'rel', 'noopener noreferrer' ])
+    }
   }).use(markdownItAnchor, {
     permalink: true,
     permalinkClass: "direct-link",
     permalinkSymbol: "#"
-  });
+  })
   eleventyConfig.setLibrary("md", markdownLibrary);
 
   // Browsersync Overrides
