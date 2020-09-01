@@ -1,0 +1,15 @@
+body {
+    --bg: #1c1110;
+    --h-color: dodgerblue;
+    --body-color: hsl(190deg, 10%, 98%);
+
+    background: var(--bg);
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: var(--h-color);
+}
+
+p {
+    color: var(--body-color);
+}

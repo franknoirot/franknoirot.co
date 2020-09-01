@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Pseudo Element Hover Stacking Order</title>
+</head>
+<body>
+    <style>
+        body {
+            height: 100vh;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            overflow-x: hidden;
+        }
+
+        p {
+            max-width: 75ch;
+        }
+
+        button {
+            transition: transform .11s ease-in-out;
+        }
+        button:hover {
+            transform: translateY(-2px);
+        }
+        button:active {
+            transform: translateY(1px);
+        }
+
+        .throughline {
+            position: relative;
+        }
+
+        .throughline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            width: 100vw;
+            height: 1px;
+            background: black;
+            transform: translate(-50%);
+            z-index: -1;
+        }
+
+        /* There seems to be a bug with the browser that brings ::before and ::after elements up on hover of an element */
+        .throughline:hover::before {
+            z-index: -1;
+        }    
+    </style>
+    <button class="throughline">do something cool.</button>
+</body>
+</html>
