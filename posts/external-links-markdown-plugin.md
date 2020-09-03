@@ -1,5 +1,5 @@
 ---
-title: How to Make All External Links Open in a New Tab with 11ty
+title: How to Make All External Links Open in a New Tab in 11ty with MarkdownIt
 layout: layouts/post.njk
 date: 2020-09-03T22:27:51.303Z
 description: We can make links that point away from our static site open in a
@@ -13,7 +13,7 @@ I get frustrated when I click a resource link in the middle of a blog post and I
 
 By default 11ty uses [Markdown It](https://github.com/markdown-it/markdown-it) as its Markdown parser program, which can be configured within the `.eleventy.js` file in your project's root. If you used a starter template for your project like I did, chances are there are already some configurations made to Markdown It. On my blog starter two plugins had already been added: a near-standard plugin called `linkify-it` and `markdown-header-anchor`, which adds little anchor links after each heading of my blog posts.
 
-All we need to do is add a very short Markdown It plugin of our own that checks each link in turn, and if it determines that link to be external, add the `target="_blank"` and `rel="noopener noreferrer"` links to it. The way to use a plugin is chain it after your initial startup call to `markdownIt` with a `.use()` call, like `markdownIt({ /*  config */}).use(pluginName).use(anotherPlugin)`.
+All we need to do is add a very short Markdown It plugin of our own that checks each link in turn, and if it determines that link to be external, add the `target="_blank"` and `rel="noopener noreferrer"` links to it. The way to use a plugin is chain it after your initial startup call to `markdownIt` with a `.use()` call, like `markdownIt({ /* config */}).use(pluginName).use(anotherPlugin)`.
 
 The easiest way to accomplish this unfortunately adds one more dependency to our project: `markdown-it-for-inline`. I'm not sure how to get around this dependency as it is referenced in each of the similar plugin examples on [Markdown It's documentation](https://github.com/markdown-it/markdown-it/blob/master/docs/architecture.md). 
 
