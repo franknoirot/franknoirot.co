@@ -1,8 +1,9 @@
 ---
-title: Toward Social Media on the JAMstack
+title: Editable User Profiles on the JAMstack
 layout: layouts/post.njk
 date: 2020-08-30T18:05:10.000Z
-description: Building a profile editing system using Gatsby, DatoCMS, Auth0, and Netlify Functions.
+description: Building a profile editing system using Gatsby, DatoCMS, Auth0, and
+  Netlify Functions.
 tags:
   - post
   - code
