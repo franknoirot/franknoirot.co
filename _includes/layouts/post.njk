@@ -3,9 +3,11 @@ layout: layouts/base.njk
 templateClasses:
 - tmpl-post
 ---
+{% if featuredImg %}
 <div class='featured-image'>
     <img src='{{ featuredImg }}' alt="" />
 </div>
+{% endif %}
 <h1>{{ title }}</h1>
 
 {{ content | safe }}
