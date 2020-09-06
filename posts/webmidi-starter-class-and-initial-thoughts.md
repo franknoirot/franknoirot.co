@@ -1,5 +1,6 @@
 ---
 title: WebMIDI Starter Class and Initial Thoughts
+slug: webmidi-starter-class-and-initial-thoughts
 layout: layouts/post.njk
 date: 2020-08-28T21:58:00.429Z
 description: Lessons learned from a starter class for MIDI access written by

@@ -1,5 +1,6 @@
 ---
 title: How to Make All External Links Open in a New Tab in 11ty with MarkdownIt
+slug: external-links-markdown-plugin
 layout: layouts/post.njk
 date: 2020-09-03T22:27:51.303Z
 description: We can make links that point away from our static site open in a

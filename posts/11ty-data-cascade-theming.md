@@ -1,5 +1,6 @@
 ---
 title: Learning 11ty's Data Cascade by Making a Random Site Theme Generator
+slug: 11ty-data-cascade-theming
 layout: layouts/post.njk
 date: 2020-08-01T22:51:06.955Z
 description: Using 11ty's Data Cascade and some simple random number generation

@@ -1,5 +1,6 @@
 ---
 title: URLs, Query Params, and Goofy Google Fonts
+slug: query-params-google-fonts
 layout: layouts/post.njk
 date: 2020-03-17T04:58:39.967Z
 description: Thoughts on URLs, and I added a tiny API to my site to let you
