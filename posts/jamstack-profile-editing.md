@@ -1,5 +1,6 @@
 ---
 title: Editable User Profiles on the JAMstack
+slug: jamstack-profile-editing
 layout: layouts/post.njk
 date: 2020-08-30T18:05:10.000Z
 description: Building a profile editing system using Gatsby, DatoCMS, Auth0, and

@@ -1,5 +1,6 @@
 ---
 title: A Better, Local Side-Project System with Git Hooks
+slug: a-better-local-side-project-system-with-git-hooks
 layout: layouts/post.njk
 date: 2020-09-05T16:01:24.729Z
 description: GitHub Actions? Where we're going, we don't need Actions.

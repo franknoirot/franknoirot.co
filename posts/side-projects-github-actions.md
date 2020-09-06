@@ -1,5 +1,6 @@
 ---
 title: Building a Side Projects Directory Using GitHub Actions
+slug: side-projects-github-actions
 layout: layouts/post.njk
 date: 2020-03-15T16:32:36.167Z
 description: Automating adding side projects to my portfolio site

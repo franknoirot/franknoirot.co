@@ -1,5 +1,6 @@
 ---
 title: How to Get Svelte Build-Time Data with Preprocessing
+slug: svelte-build-time-data-preprocessing
 layout: layouts/post.njk
 date: 2020-08-01T05:44:55.758Z
 description: Set up a pipeline that lets us bake data into our Svelte app at
