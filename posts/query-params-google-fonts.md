@@ -43,7 +43,6 @@ Try it out now. Here's this page with [Bellota](./?font=Bellota#google-fonts-cha
 Here's the entire script to make this possible:
 
 <div class='steezy-pre'>
-
 ```javascript
 window.addEventListener('load', () => {
   const searchParams = new URLSearchParams(window.location.search)
