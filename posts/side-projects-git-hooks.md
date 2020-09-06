@@ -20,8 +20,8 @@ To create a Git hook for your project, create a `.git/hooks` directory in your p
 In this file we use the `cp` command to copy each of the files we want over, then simply use git commands to stage and make our commit before pushing. I added in some variables to the top of the file so that when I copy it over to another project I can just worry about editing that part of the script without messing with the commands themselves.
 
 <div class="steezy-pre">
+
 ```bash
-{% raw %}
 #!/bin/sh
 PROJECT_NAME='Midi Controller'
 SITE_DIR=public/
@@ -42,8 +42,8 @@ cd $PORTFOLIO_DIR
 git add .
 git commit -m "updated $PROJECT_NAME"
 git push
-{% endraw %}
 ```
+
 </div>
 
 This works great! I'm able to copy the side project's output directory and [portfolio-config.json](https://franknoirot.co/posts/side-projects-github-actions/) files over very quickly, and not using anyone else's servers.
