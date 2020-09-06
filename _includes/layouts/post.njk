@@ -3,6 +3,9 @@ layout: layouts/base.njk
 templateClasses:
 - tmpl-post
 ---
+<div class='featured-image'>
+    <img src='{{ featuredImg }}' alt="" />
+</div>
 <h1>{{ title }}</h1>
 
 {{ content | safe }}
