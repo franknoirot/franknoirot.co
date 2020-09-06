@@ -20,6 +20,7 @@ In this file we use the `cp` command to copy each of the files we want over, the
 
 <div class="steezy-pre">
 ```bash
+{% raw %}
 #!/bin/sh
 PROJECT_NAME='Midi Controller'
 SITE_DIR=public/
@@ -40,6 +41,7 @@ cd $PORTFOLIO_DIR
 git add .
 git commit -m "updated $PROJECT_NAME"
 git push
+{% endraw %}
 ```
 </div>
 
