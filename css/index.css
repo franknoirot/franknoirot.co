@@ -39,6 +39,12 @@ main.tmpl-post > *,
 main.tmpl-post > pre {
   max-width: 45rem; /* 600px /16 */
 }
+
+.tmpl-post iframe {
+  display: block;
+  width: 100%;
+}
+
 .tmpl-post li,
 img,
 main.tmpl-post > *,
