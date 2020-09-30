@@ -1,0 +1,11 @@
+{
+  "name": "Shakespeare Searcher",
+  "lastUpdated": "2020-09-29",
+  "lastUpdatedMMDD": "09/29",
+  "isLocal": true,
+  "isPublic": true,
+  "path": "/shakespeare-search",
+  "themeColor": "hsl(210deg, 50%, 70%)",
+  "tools": "Svelte.js, MIT Shakespeare",
+  "image": "/img/work-screenshots/shakespeare-search.jpg"
+}
