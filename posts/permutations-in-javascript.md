@@ -8,7 +8,7 @@ description: How to iterate over every permutation of a quiz or similar sequence
 tags:
   - post
   - code
-featuredImg: /img/2020-10-24_permutations.jpg
+featuredImg: /img/2020-10-24_permutations-2.jpg
 ---
 I recently helped build a tool for a jewelry company to build personality quizzes around their merchandise, which has been the most rewarding project of my young career.
 
