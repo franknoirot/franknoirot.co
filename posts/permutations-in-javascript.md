@@ -1,5 +1,5 @@
 ---
-title: "# How to generate sequence permutations in Javascript"
+title: How to generate sequence permutations in Javascript
 slug: permutations-in-javascript
 layout: layouts/post.njk
 date: 2020-10-24T19:25:48.445Z
@@ -30,7 +30,7 @@ This is exactly like counting in normal base 10 numbers! Count up in the "ones" 
 
 We don't really need to write imperative logic to do this "carrying" logic when we count though. You can convert a base 10 number to binary more directly by finding the sequence of powers of 2 that add up to it. To convert 169 to binary, find the highest power of 2 less than it (128 is 2^7) and subtract it, then repeat. The powers of two are 2^7 + 2^5 + 2^3 + 2^0  = 169. Now simply mark each place starting from the right with a 1 to get the binary representation: `10101001`.
 
-We can apply this same logic to our quiz to convert directly from base 10. Instead of finding the highest power of 2 that goes into our number, we'll find how many times our largest "power" goes into the base 10 number.
+We can apply this same logic to our quiz to convert directly from base 10. Instead of finding the highest power of 2 that goes into our number, we'll find how many times our largest "composite power" goes into the base 10 number.
 
 ## An Example
 
