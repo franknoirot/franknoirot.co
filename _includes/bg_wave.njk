@@ -1,6 +1,6 @@
 <svg class='bg-wave' viewBox="0 0 1440 796" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <path d="M541.376 186.162C767.939 240.313 1155.8-76.484 1440 17.568V797H0V186.162c49.701-3.836 290.202-60.033 541.376 0z" fill="url(#paint0_linear)"/>
-  <path d="M541.376 186.162C767.939 240.313 1155.8-76.484 1440 17.568V797H0V186.162c49.701-3.836 290.202-60.033 541.376 0z" fill="url(#paint1_linear)"/>
+  <path d="M 0 186.162 S 79 119 276 131 S 612 234 769 189 S 1140 -20 1440 17.568 V 797 H 0 V 186.162 z" fill="url(#paint0_linear)"/>
+  <path d="M 0 186.162 S 79 119 276 131 S 612 234 769 189 S 1140 -20 1440 17.568 V 797 H 0 V 186.162 z" fill="url(#paint1_linear)"/>
   <defs>
     <linearGradient id="paint0_linear" x1="-40.528" y1="211.176" x2="1473.52" y2="128.607" gradientUnits="userSpaceOnUse">
       <stop stop-color="var(--theme-color-1)"/>
@@ -12,3 +12,21 @@
     </linearGradient>
   </defs>
 </svg>
+<script type='text/javascript'>
+  const unsupportedBrowsers = ['Firefox']
+  const wave = document.querySelector('.bg-wave')
+  const paths = Array.from(wave.querySelectorAll('path'))
+  const randBound = (center, range) => center + (Math.random() - .5) * range
+  const wavePath = () => `M 0 186.162
+    S ${randBound(75, 30)} ${randBound(120, 20)} ${randBound(275, 30)} ${randBound(135, 30)}
+    S ${randBound(610, 20)} ${randBound(230, 20)} ${randBound(770, 20)} ${randBound(190, 20)}
+    S ${randBound(1140, 20)} ${randBound(-20, 20)} 1440 17.568
+    V 797 H 0 V 186.162 z`
+
+  if (!unsupportedBrowsers.some(a => navigator.userAgent.includes(a))) {
+    setInterval(() => {
+      const w = wavePath()
+      paths.forEach(p => { p.setAttribute('d', w) })
+    }, 2000)
+  }
+</script>
