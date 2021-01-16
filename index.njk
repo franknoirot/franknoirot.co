@@ -20,14 +20,15 @@ templateClasses:
       {% include 'arrow.svg' %}
     </a>  </section>
   <section class='work-col'>
+    {%- set currentYear = dateFns.currentYear -%}
     <h2>Latest Work</h2>
     {% set workLength = 4 %}
     {%- for workItem in work | sortWorkByDate -%}
     {%- if workItem.isPublic and workLength > 0 -%}
       {%- set updatedYear = workItem.lastUpdated.slice(0,4) | int -%}
     <li {% if currentYear > updatedYear %}
-          {%- set currentYear = updatedYear -%}
           style="--year: '{{ currentYear }}';"
+          {%- set currentYear = updatedYear -%}
         {% endif %}>
       <a class='work-item' href='{% if workItem.isLocal %}/work{% endif %}{{ workItem.path }}'
       {%- if not workItem.isLocal -%}target='_blank' rel='noopener noreferrer'{%- endif -%}>

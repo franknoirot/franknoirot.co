@@ -26,6 +26,7 @@ module.exports = function(eleventyConfig) {
 
   eleventyConfig.addFilter("readableDate", dateObj => DateTime.fromJSDate(dateObj, {zone: 'utc'}).toFormat("dd LLL yyyy"))
   eleventyConfig.addFilter("MMDD", dateObj => DateTime.fromJSDate(dateObj, {zone: 'utc'}).toFormat("LL/dd"))
+  eleventyConfig.addFilter("getYear", dateObj => DateTime.fromJSDate(dateObj, {zone: 'utc'}).toFormat("yyyy"))
 
   // https://html.spec.whatwg.org/multipage/common-microsyntaxes.html#valid-date-string
   eleventyConfig.addFilter('htmlDateString', (dateObj) => {

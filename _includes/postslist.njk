@@ -1,5 +1,9 @@
 {% for post in postslist | reverse %}
-  <li>
+{%- set updatedYear = post.date | getYear -%}
+  <li {% if currentYear > updatedYear %}
+        style="--year: '{{ currentYear }}';"
+        {%- set currentYear = updatedYear -%}
+      {% endif %}>
     <div class='writing-item'>
       <time class="writing-date" datetime="{{ post.date | htmlDateString }}">{{ post.date | MMDD }}</time>
       <div>

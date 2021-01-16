@@ -471,7 +471,6 @@ a[href].direct-link:focus:visited,
 .writing-col .arrow-link path {
   stroke: var(--theme-color-1-dark);
 }
-.writing-col li::before,
 .writing-col .post-tag {
   background: var(--theme-color-1-dark);
 }

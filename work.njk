@@ -21,8 +21,8 @@ eleventyNavigation:
       {%- if workItem.isPublic -%}
         {%- set updatedYear = workItem.lastUpdated.slice(0,4) | int -%}
       <li {% if currentYear > updatedYear %}
-            {%- set currentYear = updatedYear -%}
             style="--year: '{{ currentYear }}';"
+            {%- set currentYear = updatedYear -%}
           {% endif %}>
         <a class='work-item' href='{% if workItem.isLocal %}/work{% endif %}{{ workItem.path }}'
         {%- if not workItem.isLocal -%}target='_blank' rel='noopener noreferrer'{%- endif -%}>
