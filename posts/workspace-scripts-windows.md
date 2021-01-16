@@ -11,7 +11,7 @@ featuredImg: /img/windows-setup-script.jpg
 ---
 One of the biggest barriers to getting work done on my weekend projects is the setup time. It may just be a few minutes to open up tabs to all the web services I need and open VS Code to my repository, but it feels like a climbing up a hill when I'm not motivated.
 
-So tonight I googled "open multiple tabs at once firefox" and "windows shell script" because I forgot Windows uses .exe files instead and bam! Productivity hack. These steps are for Windows but the process shouldn't be too different on Unix systems like MacOS.
+So tonight I googled "open multiple tabs at once firefox" and "windows shell script" because I forgot Windows uses .cmd files instead and bam! Productivity hack. These steps are for Windows but the process shouldn't be too different on Unix systems like MacOS.
 
 ## Step 1: Make a "scripts" folder and make your file
 
