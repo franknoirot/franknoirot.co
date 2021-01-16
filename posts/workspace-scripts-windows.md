@@ -15,7 +15,7 @@ So tonight I googled "open multiple tabs at once firefox" and "windows shell scr
 
 ## Step 1: Make a "scripts" folder and make your file
 
-I created a folder to store any other useful scripts I think up in the future, storing it within my `/code` repository, but do whatever you want, you're an adult. Now make a file with a logical name ending in `.exe`: I named my first one `rok-dev.exe`. Right click on this new file and open it with a text editor of your choice. I use VS Code.
+I created a folder to store any other useful scripts I think up in the future, storing it within my `/code` repository, but do whatever you want, you're an adult. Now make a file with a logical name ending in `.cmd`: I named my first one `rok-dev.cmd`. This is a Command Script, which is a [Windows-specific cousin ](https://smallbusiness.chron.com/write-cmd-script-53226.html)of a shell script that you may have heard about on Linux and Mac. Right click on this new file and open it with a text editor of your choice. I use VS Code.
 
 ## Step 2: Write a script
 
