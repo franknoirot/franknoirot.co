@@ -99,7 +99,7 @@ Great! Now we've created a tool that lets us pepper in arbitrary baked-in data a
 
 ## Using our custom preprocesser
 
-Let's right the data "fetching" logic first, and save it in `buildTime.js`
+Let's write the data "fetching" logic first, and save it in `buildTime.js`
 
 ```jsx
 // ./src/svelte-build-vars/buildTime.js
