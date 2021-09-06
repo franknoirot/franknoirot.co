@@ -8,6 +8,17 @@
         {% endfor %}
     }
 
+    @media (prefers-color-scheme: dark) {
+        :root {
+            {% for colorName, color in theme %}
+            --theme-hue-{{loop.index}}: {{ color.hue }};
+            --theme-brightness-{{loop.index}}: {{ color.brightness }};
+            --theme-color-{{loop.index}}: hsl(var(--theme-hue-{{loop.index}}), 65%, 28%);
+            --theme-color-{{loop.index}}-dark: hsl(var(--theme-hue-{{loop.index}}), 80%, {% adjustBrightness 30, 60, color.brightness %}%);
+            {% endfor %}
+        }
+    }
+
     {% for colorName, color in theme %}
     span.theme-{{loop.index}},
     a.theme-{{loop.index}}:hover,

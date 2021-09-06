@@ -17,6 +17,7 @@
 :root {
   overflow-x: hidden;
 }
+
 body {
   box-sizing: border-box;
   padding: 0;
@@ -28,7 +29,20 @@ body {
   position: relative;
   min-height: 100vh;
   z-index: -1; 
+  --gradientLightness: 60%;
 }
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: hsl(190deg, 20%, 5%);
+  }
+
+  body {
+    color: hsl(190deg, 5%, 88%);
+    --gradientLightness: 20%;
+  }
+}
+
 p:last-child {
   margin-bottom: 0;
 }
@@ -71,8 +85,8 @@ p,
   display: block;
   margin-block-end: 3em;
   height: 15em;
-  background: radial-gradient(circle at top left, hsl(var(--theme-hue-1), 60%, 60%), transparent),
-              radial-gradient(circle at bottom right, hsl(var(--theme-hue-2), 60%, 60%), transparent);
+  background: radial-gradient(circle at top left, hsl(var(--theme-hue-1), 60%, var(--gradientLightness)), transparent),
+              radial-gradient(circle at bottom right, hsl(var(--theme-hue-2), 60%, var(--gradientLightness)), transparent);
   box-shadow: 0 .2em .6em rgba(0,0,0,.15), 0 .5em .9em rgba(0,0,0,0.07);
 }
 
@@ -799,8 +813,8 @@ footer {
   }
 
   .tmpl-home .two-col {
-    background: radial-gradient(circle at top center, hsla(var(--theme-hue-1), 60%, 65%, .4), rgba(255,255,255,0.1)),
-                radial-gradient(circle at bottom center, hsla(var(--theme-hue-2), 60%, 65%, .5), rgba(255,255,255,0.5));
+    background: radial-gradient(circle at top center, hsla(var(--theme-hue-1), 60%, var(--gradientLightness), .4), rgba(255,255,255,0.1)),
+                radial-gradient(circle at bottom center, hsla(var(--theme-hue-2), 60%, var(--gradientLightness), .5), rgba(255,255,255,0.5));
     padding:  2em .5rem;
     gap: 5vh;    
   }
