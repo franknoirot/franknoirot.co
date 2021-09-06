@@ -278,7 +278,7 @@ pre {
   margin: .6em 0;
   margin-left: 0.5em; /* 8px /10 */
   background-color: var(--red);
-  color: var(--text);
+  color: var(--background);
   border-radius: 0.2em; /* 3px /12 */
   text-decoration: none;
 }
@@ -287,15 +287,8 @@ pre {
 }
 a[href].post-tag,
 a[href].post-tag:visited {
-  color: var(--text);
+  color: var(--background);
   display: inline-block;
-}
-
-@media (prefers-color-scheme: dark) {
-  a[href].post-tag,
-  a[href].post-tag:visited {
-    color: var(--background);
-  }
 }
 
 /* Warning */
