@@ -10,7 +10,7 @@ tags:
   - design
 featuredImg: /img/2021_09_05-cadhub_2.jpg
 ---
-I've gotten the chance to help out on a project called [CadHub](https://cadhub.xyz), which is trying to generate the friendliness and community that CodePen brought to frontend web development for the small world of "Code-CAD". Code-CAD (or CodeCAD, the spelling is TBD) is a loose collection of softwares that allow 3D modeling to be done mainly with written scripts, or supporting scripts as first-class citizens. 
+I've gotten the chance to help out on a project called [CadHub](https://cadhub.xyz). CadHub is an online editor for 3D modeling, which is trying to generate the friendliness and community that CodePen brought to frontend web development for the small world of "Code-CAD". Code-CAD is a set of technologies that allow users to create 3D models by writing in programming languages like JavaScript and Python, instead of traditional point-and-click interfaces that exist in most 3D modeling software. While these Code-CAD packages have been around for a long time, it has historically been difficult to get started using them, requiring installation of tools and multi-step setup to get running smoothly. CadHub's editor lets these packages be tried out in a live editor in the browser, and be shared with a simple link.
 
 ## What I've been up to
 
