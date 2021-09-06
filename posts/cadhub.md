@@ -20,15 +20,13 @@ My first contribution was this feature that lets you take a screenshot of your p
 
 Since then I've been hooked, and I've become one of the core contributors on the project.
 
-My initial work with Kurt was to make the leap to a custom editor and an app architecture that treated different CAD packages as plugins. We are so happy with how that process has turned out, because since then we have been able to integrate 3 of the most used Code-CAD packages—CadQuery, OpenSCAD, and JSCAD—into this platform. This means that users can now try out 3D modeling in three completely different languages all in the same place!
+My initial work with Kurt was to make the leap to a custom editor and an app architecture that treated different CAD packages as plugins. We are so happy with how that process has turned out, because since then contributors from 3 of the most used Code-CAD packages—CadQuery, OpenSCAD, and JSCAD—have been able to integrate into CadHub. This means that users can now try out 3D modeling in three completely different languages all in the same place!
 
-My ongoing work has been leading UX design for the platform, which you can check out within [our Figma project](https://www.figma.com/file/VUh53RdncjZ7NuFYj0RGB9/CadHub?node-id=1046%3A0). Kurt did an excellent job getting everything up and running in the core of the project, so my work has been about finding a way to pull all that charm into a full-fledged productivity app in the same family as CodeSandbox and CodePen.
+My ongoing work has been leading UX design for the platform, which you can check out within [our Figma project](https://www.figma.com/file/VUh53RdncjZ7NuFYj0RGB9/CadHub?node-id=1046%3A0). Kurt did an excellent job getting everything up and running in the core of the project, so my work has been about finding a way to pull all that personality along as we redesign into a full-fledged social productivity app in the same family as CodeSandbox and CodePen.
 
 In addition, I have been helping by [taking notes in our weekly meetings](https://github.com/Irev-Dev/cadhub/discussions/487) with contributors and CAD package maintainers as we continue to refine the core platform. I am excited for this next phase of the project because we are nearing a threshold where we are no longer just creating a playground for these tools to be tried out, but instead are actively helping to evolve the way they are used.
 
-We have recently released a customizer tool for OpenSCAD projects that promises to be everything the Thingiverse customizer was supposed to be. Not only that, but the maintainers of our other integrations are adapting them to be able to support similar customizer functionality! That means soon whether you write in C++-like code with OpenSCAD, Python with CadQuery, or JavaScript with JSCAD, you'll be able to have similar customizable parameters for people to tweak, with a slick UI for them right on the web!
-
- 
+We recently released a customizer tool for OpenSCAD projects that promises to be everything the Thingiverse customizer (RIP) was supposed to be. Not only that, but the maintainers of our other integrations are adapting them to be able to support similar customizer functionality! That means soon whether you write in C++-like code with OpenSCAD, Python with CadQuery, or JavaScript with JSCAD, you'll be able to have similar customizable parameters for people to tweak, with a slick UI for them right on the web!
 
 ![A screenshot of my design for the customizer tray, which allows users to make certain parameters within their models available for others to tweak without editing any code.](/img/2021_09_05-cadhub_3.jpg)
 
