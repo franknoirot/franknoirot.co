@@ -30,7 +30,7 @@ We have recently released a customizer tool for OpenSCAD projects that promises 
 
  
 
-[A screenshot of my design for the customizer tray, which allows users to make certain parameters within their models available for others to tweak without editing any code.](/img/2021_09_05-cadhub_1.jpg)
+![A screenshot of my design for the customizer tray, which allows users to make certain parameters within their models available for others to tweak without editing any code.](/img/2021_09_05-cadhub_3.jpg)
 
 ## Bringing code back to CAD
 
