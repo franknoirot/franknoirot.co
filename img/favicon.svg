@@ -1,0 +1,17 @@
+<svg viewBox="0 0 106 106" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <style>
+        circle { fill: #efefef; }
+        .f { fill: #171818; }
+        .n { fill: #00B5D3; }
+
+        @media (prefers-color-scheme: dark) {
+            circle { fill: #0e0508; }
+            .f { fill: #a0abbf; }
+            .n { fill: #00B5C3; }
+        }
+    </style>
+    <circle cx="53" cy="53" r="52"/>
+    <path class="n" d="M71.5517 56.2434V18.6035H82.2531V83.8636L49.0788 47.4789V75.5186L38.3774 80.4759V40.3966H57.1032L71.5517 56.2434Z"/>
+    <path class="f" d="M67.9355 18.8994L67.9355 29.9203L34.3975 29.9203L34.3975 40.3991L56.9147 40.3991L56.9147 51.42L34.3975 51.42L34.3975 81.592L23.7983 86.8314L23.7983 18.8994L67.9355 18.8994Z"/>
+    <path class="n" d="M38.3774 19.8586L57.0291 40.3153H38.3774V19.8586Z"/>
+</svg>
