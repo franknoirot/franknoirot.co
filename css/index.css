@@ -818,10 +818,10 @@ footer {
   }
 
   .tmpl-home .two-col {
-    background: radial-gradient(circle at top center, hsla(var(--theme-hue-1), 60%, var(--gradientLightness), .4), rgba(255,255,255,0.1)),
+    background: radial-gradient(circle at top center, hsla(var(--theme-hue-1), 80%, var(--gradientLightness), .5), rgba(255,255,255,0.1)),
                 radial-gradient(circle at bottom center, hsla(var(--theme-hue-2), 60%, var(--gradientLightness), .5), rgba(255,255,255,0.5));
     padding:  2em .5rem;
-    gap: 5vh;    
+    gap: 4rem;    
   }
 
   .tmpl-home .big-statement {
@@ -872,8 +872,10 @@ footer {
     padding-block-end: .2rem;
   }
 
-  .work-date {
-    margin-inline-start: 1.25rem;
+  .work-date, .writing-date {
+    font-size: 1.4rem;
+    margin-inline-start: 2rem;
+    margin-inline-end: 1.5rem;
   }
 
   footer {
@@ -881,7 +883,6 @@ footer {
     padding: 1rem;
     position: relative;
     z-index: 99;
-    background: white;
   }
 
   .tmpl-home ~ footer {
