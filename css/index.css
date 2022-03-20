@@ -72,14 +72,29 @@ p,
   line-height: 1.45;
 }
 
-.tmpl-post p {
+.tmpl-post p,
+.tmpl-post li {
   font-family: inherit;
   font-family: 'Bitter';
   font-size: 1.2rem;
   line-height: 1.75;
-  margin-block: 1.6em;
-  margin-top: 1.6em;
-  margin-bottom: 1.6em;
+}
+
+.tmpl-post p,
+.tmpl-post ul {
+  margin-top: 1rem;
+  margin-bottom: 1.6rem;
+}
+
+.tmpl-post h2 {
+  margin-top: 3rem;
+  margin-bottom: 1rem;
+}
+
+.tmpl-post blockquote {
+  padding-inline-start: 1.5rem;
+  border-left: var(--theme-color-1) solid;
+  color: var(--theme-color-2-dark);
 }
 
 .tmpl-post .featured-image {
