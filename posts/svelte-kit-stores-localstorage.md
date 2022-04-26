@@ -13,16 +13,18 @@ featuredImg: /img/svelte-localstorage.jpg
 Svelte stores are part of the reason it's my favorite JavaScript framework to work with. They're reactive, globally-sharable, and have an ergonomic API. The only problem with them is that, like most JS global state solutions, they disappear on page refresh. Let's fix that by writing a few helper functions to back them up to localStorage.
 
 # make a `stores.ts` file
-If you're not familiar with Svelte stores, the [official Svelte interactive tutorial](https://svelte.dev/tutorial/basics) is where you should head first. It really is an excellent way to get used to the concepts. Then make a `store.ts` (or `store.js`) file in your Svelte project directory. If you're using Svelte Kit like I am these days, I like to put it in `/lib/stores.ts` to be able to import it later easily with `$lib/stores`.
+If you're not familiar with Svelte stores, the [official Svelte interactive tutorial](https://svelte.dev/tutorial/basics) is where you should head first. It really is an excellent way to get used to the concepts. Then make a `store.ts` (or `store.js`) file in your Svelte project directory. If you're using Svelte Kit like I am these days, I like to put it in `/lib/stores.ts` to be able to import it later easily with `$lib/stores` thanks to [SvelteKit's $ imports](https://kit.svelte.dev/docs/modules#$lib).
 
 Now you can create stores as you normally would, importing `readable`, `writable`, and `derived` stores as necessary. Here is one of my stores as an example:
 ```ts
+import { writable } from 'svelte/store'
+
 // Trip ID. The ID of the user's most recent reserved trip.
 export const tripId = writable('')
 ```
 
 ## a `fromLocalStorage method`
-The first step in a robust, backed-up Svelte store is get a value from local storage if it exists, and fallback to a provided initial value if it's provided. I've named this function `fromLocalStorage`. It uses [SvelteKit's importable environment variable](https://kit.svelte.dev/docs/modules#$app-env-browser) to detect if we're in a browser or serverside context, so that we don't accidentally try to use `localStorage` when there isn't a `window` present.
+The first step in a robust, backed-up Svelte store is to get a value from local storage if it exists, and fallback to a provided initial value if it's provided. I've named this function `fromLocalStorage`. It uses [SvelteKit's importable environment variable](https://kit.svelte.dev/docs/modules#$app-env-browser) to detect if we're in a browser or serverside context, so that we don't accidentally try to use `localStorage` when there isn't a `window` present.
 
 ```ts
 import { browser } from '$app/env';
