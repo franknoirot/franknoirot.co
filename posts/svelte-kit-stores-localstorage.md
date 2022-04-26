@@ -45,7 +45,7 @@ function fromLocalStorage(storageKey: string, fallbackValue: any) {
 }
 ```
 
-Nothing much going on here right? Local storage will return `undefined` if you try to get items that don't exist, so we need to verify that `storedValue` is valid before returning it, and if not or if we're not in the browser, just return the fallback default value. I also added a check to see if our fallback value has a `typeof` equal to Object (which includes things like Arrays and Dates in JavaScript), so that we can parse them to match the desired type on the way out.
+Nothing too crazy going on here, right? Local storage will return `undefined` if you try to get items that don't exist, so we need to verify that `storedValue` is valid before returning it, and if not or if we're not in the browser, just return the fallback default value. I also added a check to see if our fallback value has a `typeof` equal to Object (which [includes things like Arrays and Dates](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/typeof#basic_usage) in JavaScript), so that we can parse them to match the desired type on the way out.
 
 Returning to our example store, here's what it looks like after augmenting it to use `fromLocalStorage`:
 ```ts
@@ -110,7 +110,7 @@ Note how the initial values of both `pickup` and `dropoff` are now broken out an
 ```js
 // src/routes/cars/[id].svelte
 <script context="module">
-	import { getCarByIdvalidateCarDates } from '$lib/cms';
+	import { getCarById, validateCarDates } from '$lib/cms';
 	import { pickupInitialValue, dropoffInitialValue } from '$lib/stores';
 	export const prerender = false; // set page to not pre-render for live car info
 	
