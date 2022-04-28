@@ -7,7 +7,7 @@ description: "Automatically back up and retrieve your Svelte stores from localSt
 tags:
   - post
   - code
-featuredImg: /img/svelte-localstorage.jpg
+featuredImg: /img/svelte-stores-localstorage.jpg
 ---
 
 Svelte stores are part of the reason it's my favorite JavaScript framework to work with. They're reactive, globally-sharable, and have an ergonomic API. The only problem with them is that, like most JS global state solutions, they disappear on page refresh. Let's fix that by writing a few helper functions to back them up to localStorage.
